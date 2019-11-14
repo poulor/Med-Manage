@@ -1,4 +1,4 @@
-# Medical Care Management System: 
+# Medical Care Management System
 
 * Login System?
 
