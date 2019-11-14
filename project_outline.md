@@ -1,41 +1,33 @@
-Medical Care Management System: 
+# Medical Care Management System: 
 
-* Login System? 
+* Login System?
 
-* Patient Info 
+* Patient Info
 
-    * Illnesses 
+  * Illnesses
+  * Age
+  * Height
+  * Weight
+  * Sex
+  * Ethnicity?
+  * Address
 
-    * Age 
+* Patient can make appointments
 
-    * Height 
+  * Look at doctors
+  
+    * Doctor has credentials
 
-    * Weight 
-     
-    * Sex 
-     
-    * Ethnicity? 
-     
-    * Address 
+* Patient can fill / refill prescriptions
 
-Patient can make appointments 
+* Hospital faculty can look up patients / search
 
-Look at doctors 
+  * Room number
 
-Doctor has credentials 
+  * Patient info
 
-Patient can fill / refill prescriptions 
+## To do
 
-Hospital faculty can look up patients / search 
-
-Room number 
-
-Patient info 
-
-To do: 
-
-Create wireframe of what the receptionist sees 
-
-Create wireframe of what the doctor sees 
-
-Create wireframe of what the patient sees – nice to have 
+* Create wireframe of what the receptionist sees
+* Create wireframe of what the doctor sees
+* Create wireframe of what the patient sees – nice to have
