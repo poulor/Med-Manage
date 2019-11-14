@@ -1,0 +1,91 @@
+// Database design  
+
+Table users as U {   
+
+  user_id int [pk, increment] // auto-increment   
+
+  full_name varchar   
+
+  username varchar   
+
+  password varchar   
+
+  user_type int   
+
+}   
+
+Table doctors as U {   
+
+  doctor_id int [pk, increment] // auto-increment   
+
+  full_name varchar   
+
+  phone_number phone_number   
+
+  specialties varchar
+
+  department varchar   
+
+  user_id int [pk, increment]   
+
+}   
+
+Table patients as U {   
+
+  patient_id int [pk, increment] // auto-increment   
+
+  full_name varchar   
+
+  gender varchar   
+
+  age int   
+
+  date_of_birth date   
+
+  height double   
+
+  weight double   
+
+  address varchar   
+
+  phone_number varchar   
+
+  health_history varchar   
+
+}   
+
+Table receptionists as U {   
+
+  receptionist_id int [pk, increment] // auto-increment   
+
+  full_name varchar   
+
+  date_joined date   
+
+}   
+
+Table appointments as U {   
+
+  appointment_id int [pk, increment] // auto-increment   
+
+  patient_name varchar   
+
+  appointment_date date   
+
+  appointment_time timestamp  
+
+  notes varchar  
+
+  doctor_id int [pk, increment]   
+
+  patient_id int [pk, increment]   
+
+}   
+
+Ref: patients.patient_id < appointments.patient_id   
+
+Ref: doctors.doctor_id < appointments.doctor_id   
+
+Ref: doctors.user_id < patients.patient_id
+
+Ref: users.user_id - doctors.user_id
