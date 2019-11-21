@@ -1,9 +1,6 @@
 package client;
 
-import java.util.Date;
 import java.util.Locale;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;  
 
@@ -12,7 +9,6 @@ public class Patient {
     private String lastName;
     private String gender;
     private int age;
-    // private Date dateOfBirth;
     private LocalDate dateOfBirth;
     private double height;
     private double weight;
@@ -30,8 +26,6 @@ public class Patient {
         this.gender = gender;
         this.age = age;
         this.firstName = firstName;
-        // this.dateOfBirth = new SimpleDateFormat("MM/dd/yyyy").parse(dateOfBirth);
-        
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
         formatter = formatter.withLocale( Locale.US );
         this.dateOfBirth = LocalDate.parse(dateOfBirth, formatter);
