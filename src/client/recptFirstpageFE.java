@@ -29,7 +29,7 @@ public class recptFirstpageFE extends Application
 		//pane.add(scheduleApp, 0, 3);
 		
 		Scene scene = new Scene(pane, 600, 400);
-		primaryStage.setTitle("Sign In");
+		primaryStage.setTitle("Receptionist");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
