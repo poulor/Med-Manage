@@ -1,10 +1,16 @@
 // Database design  
 
-Table users as U {   
+Table Users as U {   
 
   user_id int [pk, increment] // auto-increment   
 
-  full_name varchar   
+  first_name varchar
+  
+  middle_name varchar
+  
+  last_name varchar
+  
+  gender varchar
 
   username varchar   
 
@@ -14,15 +20,13 @@ Table users as U {
 
 }   
 
-Table doctors as U {   
+Table Doctors as U {   
 
   doctor_id int [pk, increment] // auto-increment   
 
-  full_name varchar   
-
   phone_number phone_number   
 
-  specialties varchar
+  specialty varchar
 
   department varchar   
 
@@ -30,13 +34,9 @@ Table doctors as U {
 
 }   
 
-Table patients as U {   
+Table Patients as U {   
 
   patient_id int [pk, increment] // auto-increment   
-
-  full_name varchar   
-
-  gender varchar   
 
   age int   
 
@@ -50,25 +50,27 @@ Table patients as U {
 
   phone_number varchar   
 
-  health_history varchar   
+  health_history varchar
+  
+  notes varchar
+  
+  user_id int [pk, increment] 
 
 }   
 
-Table receptionists as U {   
+Table Receptionists as U {   
 
   receptionist_id int [pk, increment] // auto-increment   
 
-  full_name varchar   
-
-  date_joined date   
+  join_date date   
+  
+  user_id int [pk, increment] 
 
 }   
 
-Table appointments as U {   
+Table Appointments as U {   
 
   appointment_id int [pk, increment] // auto-increment   
-
-  patient_name varchar   
 
   appointment_date date   
 
@@ -82,10 +84,26 @@ Table appointments as U {
 
 }   
 
-Ref: patients.patient_id < appointments.patient_id   
+Table Administrators as U {
 
-Ref: doctors.doctor_id < appointments.doctor_id   
+  administrator_id int [pk, increment] // auto-increment   
 
-Ref: doctors.user_id < patients.patient_id
+  join_date date 
+  
+  user_id int [pk,increment]
 
-Ref: users.user_id - doctors.user_id
+} 
+
+Ref: Patients.patient_id < Appointments.patient_id   
+
+Ref: Doctors.doctor_id < Appointments.doctor_id   
+
+Ref: Doctors.user_id < Patients.patient_id
+
+Ref: Users.user_id - Doctors.user_id
+
+Ref: Users.user_id - Administrators.user_id
+
+Ref: Users.user_id - Patients.user_id
+
+Ref: Users.user_id - Receptionists.user_id
