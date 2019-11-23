@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -33,6 +34,7 @@ public class newPatient extends Application
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
 	private TextField phone = new TextField();
+	private TextArea history = new TextArea();
 	
 	private Button newPatient = new Button("Create New Patient");
 	
@@ -71,7 +73,9 @@ public class newPatient extends Application
 		pane.add(state, 1, 8);
 		pane.add(new Label("Phone#: "), 0, 9);
 		pane.add(phone, 1, 9);
-		pane.add(newPatient, 1,10);
+		pane.add(new Label("History: "), 0, 10);
+		pane.add(history, 1, 10);
+		pane.add(newPatient, 1,11);
 	    GridPane.setHalignment(newPatient, HPos.RIGHT);
 	    
 	    Scene scene = new Scene(pane, 600, 400);
