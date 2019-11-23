@@ -21,14 +21,8 @@ public class New_Patient_Form extends Application
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
 	private TextField eMail = new TextField();
-	private DatePicker dob = new DatePicker();
-	ObservableList<String> genders = 
-			FXCollections.observableArrayList(
-					"Female",
-					"Male",
-					"Other"
-					);
-	private ComboBox gender = new ComboBox(genders);
+	private TextField dob = new TextField();
+	private TextField gender = new TextField();
 	private TextField address = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
@@ -38,12 +32,9 @@ public class New_Patient_Form extends Application
 	
 	private Button newPatient = new Button("Create New Patient");
 	
-	
 	@Override
-	
 	public void start(Stage primaryStage)
 	{
-		
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 		
