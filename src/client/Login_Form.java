@@ -19,7 +19,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Login extends Application 
+public class Login_Form extends Application 
 {
 	private TextField un = new TextField();
 	private TextField pw = new TextField();
