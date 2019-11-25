@@ -1,108 +1,77 @@
-drop database if exists MedicalClient;
-create database MedicalClient;
--- drop user if exists 'scott'@'localhost';
+DROP DATABASE IF EXISTS MedicalClient;
+CREATE DATABASE MedicalClient;
+-- drop user IF EXISTS 'scott'@'localhost';
 -- create user 'scott'@'localhost' identified by 'tiger';
--- grant select, insert, update, delete, create, create view, drop, execute, references on javabook.* to 'scott'@'localhost';
+-- grant select, insert, upDATE, delete, create, create view, drop, execute, REFERENCES on javabook.* to 'scott'@'localhost';
 
-use MedicalClient;
-drop table if exists Users;
-drop table if exists Administrators;
-drop table if exists Appointments;
-drop table if exists Doctors;
-drop table if exists Patients;
-drop table if exists Receptionists;
-
-
-create table Users ( 
-  user_id INT NOT NULL AUTO_INCREMENT,
-  first_name varchar(25), 
-  middle_name char(1), 
-  last_name varchar(25), 
-  phone char(11),  
-  birth_date date,  
-  street varchar(25), 
-  zip_code char(5),
-  deptId char(4),  
-  primary key (user_id)
+PRIMARY KEY MedicalClient;
+DROP TABLE IF EXISTS Users;
+DROP TABLE IF EXISTS Administrators;
+DROP TABLE IF EXISTS Appointments;
+DROP TABLE IF EXISTS Doctors;
+DROP TABLE IF EXISTS Patients;
+DROP TABLE IF EXISTS Receptionists;
 
 
-  first_name varchar
-  
-  middle_name varchar
-  
-  last_name varchar
-  
-  gender varchar
-
-  username varchar   
-
-  password varchar   
-
-  user_type int 
+CREATE TABLE Users ( 
+	user_id INT NOT NULL AUTO_INCREMENT,
+	first_name VARCHAR(25), 
+	middle_name VARCHAR(1), 
+	last_name VARCHAR(25),
+	gender VARCHAR(6). 
+	phone_number VARCHAR(11),  
+	birth_date DATE,  
+	street VARCHAR(25), 
+	zip_code VARCHAR(5),
+	username VARCHAR   
+	passwd VARCHAR   
+	user_type int
+	PRIMARY KEY (user_id)
 ); 
 
 
-create table Administrators (
-  courseId char(5),
-  subjectId char(4) not null, 
-  courseNumber integer, 
-  title varchar(50) not null, 
-  numOfCredits integer, 
-  primary key (courseId)
+CREATE TABLE Administrators (
+	administrator_id INT NOT NULL AUTO_INCREMENT,
+	join_DATE DATE,
+	PRIMARY KEY (administrator_id),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
-create table Appointments (
-  courseId char(5),
-  subjectId char(4) not null, 
-  courseNumber integer, 
-  title varchar(50) not null, 
-  numOfCredits integer, 
-  primary key (courseId)
+CREATE TABLE Receptionists (
+	receptionist_id INT NOT NULL AUTO_INCREMENT,
+	join_DATE DATE,
+	PRIMARY KEY (receptionist_id),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
-create table Doctors (
-  ssn char(9), 
-  courseId char(5),
-  dateRegistered date,  
-  grade char(1),
-  primary key (ssn, courseId),
-  foreign key (ssn) references Student(ssn),
-  foreign key (courseId) references Course(courseId)
-); 
 
-create table Patients (
-  ssn char(9), 
-  courseId char(5),
-  dateRegistered date,  
-  grade char(1),
-  primary key (ssn, courseId),
-  foreign key (ssn) references Student(ssn),
-  foreign key (courseId) references Course(courseId)
-); 
+CREATE TABLE Doctors (
+	doctor_id INT NOT NULL AUTO_INCREMENT,
+	join_date DATE,
+	specialty VARCHAR(15),
+	department VARCHAR(15),
+	PRIMARY KEY (doctor_id),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
 
-create table Receptionists (
-  ssn char(9), 
-  courseId char(5),
-  dateRegistered date,  
-  grade char(1),
-  primary key (ssn, courseId),
-  foreign key (ssn) references Student(ssn),
-  foreign key (courseId) references Course(courseId)
-); 
+CREATE TABLE Patients (
+	patient_id INT NOT NULL AUTO_INCREMENT,
+	ht DOUBLE,
+	wt DOUBLE,
+	medications VARCHAR(150)
+	health_history VARCHAR(500),
+	notes VARCHAR(500),
+	PRIMARY KEY (patient_id),
+	FOREIGN KEY (user_id) REFERENCES Users(user_id)
+);
 
-insert into Student values (
-  '444111110', 'Jacob', 'R', 'Smith', null,
-  '1985-04-09', '99 Kingston Street', '31435', 'BIOL');
-insert into Student values (
-  '444111111', 'John', 'K', 'Stevenson', '9129219434',
-  null, '100 Main Street', '31411', 'BIOL');
+CREATE TABLE Appointments (
+	appointment_id INT NOT NULL AUTO_INCREMENT,
+	appointment_date DATE,
+	appointment_time TIMESTAMP,
+	notes VARCHAR(500),
+	PRIMARY KEY (appointment_id),
+	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
+	FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
 
-insert into Course values (
-  '11111', 'CSCI', '1301', 'Intro to Java I', 4);
-insert into Course values (
-  '11112', 'CSCI', '1302', 'Intro to Java II', 3);
-
-insert into Enrollment values (
-  '444111110', '11111', now(), 'A');
-/* In MS Access, replace now() by date() */
-insert into Enrollment values (
-  '444111110', '11112', now(), 'B');
+	
+);

@@ -2,108 +2,106 @@
 
 Table Users as U {   
 
-  user_id int [pk, increment] // auto-increment   
+	user_id int [pk, increment] // auto-increment   
 
-  first_name varchar
-  
-  middle_name varchar
-  
-  last_name varchar
-  
-  gender varchar
+	first_name varchar
 
-  username varchar   
+	middle_name varchar
 
-  password varchar   
+	last_name varchar
 
-  user_type int   
+	gender varchar
+
+	phone_number VARCHAR 
+	
+	birth_date DATE,  
+	
+	street VARCHAR  
+	
+	zip_code VARCHAR
+
+	username varchar   
+
+	password varchar   
+
+	user_type int   
 
 }   
 
 Table Doctors as U {   
 
-  doctor_id int [pk, increment] // auto-increment   
+	doctor_id int [pk, increment] // auto-increment   
 
-  phone_number phone_number   
+	specialty varchar
 
-  specialty varchar
+	department varchar   
 
-  department varchar   
-
-  user_id int [pk, increment]   
+	user_id int [pk, increment]   
 
 }   
 
 Table Patients as U {   
 
-  patient_id int [pk, increment] // auto-increment   
+	patient_id int [pk, increment] // auto-increment   
 
-  age int   
+	height double   
 
-  date_of_birth date   
+	weight double   
 
-  height double   
+	health_history varchar
 
-  weight double   
+	notes varchar
 
-  address varchar   
-
-  phone_number varchar   
-
-  health_history varchar
-  
-  notes varchar
-  
-  user_id int [pk, increment] 
+	user_id int [pk, increment] 
 
 }   
 
 Table Receptionists as U {   
 
-  receptionist_id int [pk, increment] // auto-increment   
+	receptionist_id int [pk, increment] // auto-increment   
 
-  join_date date   
-  
-  user_id int [pk, increment] 
+	join_date date   
+
+	user_id int [pk, increment] 
 
 }   
 
 Table Appointments as U {   
 
-  appointment_id int [pk, increment] // auto-increment   
+	appointment_id int [pk, increment] // auto-increment   
 
-  appointment_date date   
+	appointment_date date   
 
-  appointment_time timestamp  
+	appointment_time timestamp  
 
-  notes varchar  
+	notes varchar  
 
-  doctor_id int [pk, increment]   
+	doctor_id int [pk, increment]   
 
-  patient_id int [pk, increment]   
+	patient_id int [pk, increment]   
 
 }   
 
 Table Administrators as U {
 
-  administrator_id int [pk, increment] // auto-increment   
+	administrator_id int [pk, increment] // auto-increment   
 
-  join_date date 
-  
-  user_id int [pk,increment]
+	join_date date 
+
+	user_id int [pk,increment]
 
 } 
 
-Ref: Patients.patient_id < Appointments.patient_id   
+Ref: Patients.patient_id < Appointments.patient_id   // One to many
 
-Ref: Doctors.doctor_id < Appointments.doctor_id   
+Ref: Doctors.doctor_id < Appointments.doctor_id   // One to many
 
-Ref: Doctors.user_id < Patients.patient_id
+Ref: Doctors.user_id < Patients.patient_id	// One to many
 
-Ref: Users.user_id - Doctors.user_id
+Ref: Users.user_id - Doctors.user_id // One to one
 
-Ref: Users.user_id - Administrators.user_id
+Ref: Users.user_id - Administrators.user_id	// One to one
 
-Ref: Users.user_id - Patients.user_id
+Ref: Users.user_id - Patients.user_id // One to one
 
-Ref: Users.user_id - Receptionists.user_id
+Ref: Users.user_id - Receptionists.user_id // One to one
