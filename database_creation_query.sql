@@ -4,7 +4,7 @@ CREATE DATABASE MedicalClient;
 -- create user 'scott'@'localhost' identified by 'tiger';
 -- grant select, insert, upDATE, delete, create, create view, drop, execute, REFERENCES on javabook.* to 'scott'@'localhost';
 
-PRIMARY KEY MedicalClient;
+USE MedicalClient;
 DROP TABLE IF EXISTS Users;
 DROP TABLE IF EXISTS Administrators;
 DROP TABLE IF EXISTS Appointments;
