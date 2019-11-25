@@ -15,15 +15,30 @@ drop table if exists Receptionists;
 
 create table Users ( 
   user_id INT NOT NULL AUTO_INCREMENT,
-  firstName varchar(25), 
-  midName char(1), 
-  lastName varchar(25), 
+  first_name varchar(25), 
+  middle_name char(1), 
+  last_name varchar(25), 
   phone char(11),  
-  birthDate date,  
+  birth_date date,  
   street varchar(25), 
-  zipCode char(5),
+  zip_code char(5),
   deptId char(4),  
   primary key (user_id)
+
+
+  first_name varchar
+  
+  middle_name varchar
+  
+  last_name varchar
+  
+  gender varchar
+
+  username varchar   
+
+  password varchar   
+
+  user_type int 
 ); 
 
 
