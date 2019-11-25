@@ -12,7 +12,6 @@ DROP TABLE IF EXISTS Doctors;
 DROP TABLE IF EXISTS Patients;
 DROP TABLE IF EXISTS Receptionists;
 
-
 CREATE TABLE Users ( 
 	user_id INT NOT NULL AUTO_INCREMENT,
 	first_name VARCHAR(25), 
@@ -28,7 +27,6 @@ CREATE TABLE Users (
 	user_type int
 	PRIMARY KEY (user_id)
 ); 
-
 
 CREATE TABLE Administrators (
 	administrator_id INT NOT NULL AUTO_INCREMENT,
@@ -72,6 +70,4 @@ CREATE TABLE Appointments (
 	PRIMARY KEY (appointment_id),
 	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
 	FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
-
-	
 );
