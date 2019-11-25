@@ -32,14 +32,14 @@ CREATE TABLE Users (
 
 CREATE TABLE Administrators (
 	administrator_id INT NOT NULL AUTO_INCREMENT,
-	join_DATE DATE,
+	join_date DATE,
 	PRIMARY KEY (administrator_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
 CREATE TABLE Receptionists (
 	receptionist_id INT NOT NULL AUTO_INCREMENT,
-	join_DATE DATE,
+	join_date DATE,
 	PRIMARY KEY (receptionist_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
