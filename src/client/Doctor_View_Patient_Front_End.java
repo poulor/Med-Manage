@@ -20,15 +20,9 @@ public class Doctor_View_Patient_Front_End extends Application
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
-	private TextField eMail = new TextField();
 	private TextField dob = new TextField();
-	
 	private TextField gender = new TextField();
-	private TextField address = new TextField();
-	private TextField city = new TextField();
-	private TextField state = new TextField();
-	private TextField zip = new TextField();
-	private TextField phone = new TextField();
+	private TextField medications = new TextField();
 	private TextArea history = new TextArea();
 	private TextArea notes = new TextArea();
 
@@ -40,16 +34,8 @@ public class Doctor_View_Patient_Front_End extends Application
 	@Override
 	public void start(Stage primaryStage)
 	{
-		
-		eMail.setEditable(false);
 		dob.setEditable(false);
 		gender.setEditable(false);
-		address.setEditable(false);
-		city.setEditable(false);
-		state.setEditable(false);
-		zip.setEditable(false);
-		phone.setEditable(false);
-		// history.setEditable(false);
 		
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
@@ -68,23 +54,13 @@ public class Doctor_View_Patient_Front_End extends Application
 		pane.add(gender, 1, 2);
 		pane.add(new Label("Date of Birth: "), 0, 3);
 		pane.add(dob, 1, 3);
-		pane.add(new Label("Email: "), 0, 4);
-		pane.add(eMail, 1, 4);
-		pane.add(new Label("Address: "), 0, 5);
-		pane.add(address, 1, 5);
-		pane.add(new Label("City: "), 0, 6);
-		pane.add(city, 1, 6);
-		pane.add(new Label("Zip: "), 0, 7);
-		pane.add(zip, 1, 7);
-		pane.add(new Label("State: "), 0, 8);
-		pane.add(state, 1, 8);
-		pane.add(new Label("Phone#: "), 0, 9);
-		pane.add(phone, 1, 9);
-		pane.add(new Label("History: "), 0, 10);
-		pane.add(history, 1, 10);
-		pane.add(new Label("Notes: "), 0, 11);
-		pane.add(notes, 1, 11);
-		pane.add(viewPatient, 1,12);
+		pane.add(new Label("Medications: "), 0, 4);
+		pane.add(medications, 1, 4);
+		pane.add(new Label("Health History: "), 0, 5);
+		pane.add(history, 1, 5);
+		pane.add(new Label("Notes: "), 0, 6);
+		pane.add(notes, 1, 6);
+		pane.add(viewPatient, 1,7);
 		
 	    GridPane.setHalignment(viewPatient, HPos.RIGHT);
 	    
