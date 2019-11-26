@@ -55,7 +55,7 @@ CREATE TABLE Patients (
 	patient_id INT NOT NULL AUTO_INCREMENT,
 	ht DOUBLE,
 	wt DOUBLE,
-	medications VARCHAR(150)
+	medications VARCHAR(150),
 	health_history VARCHAR(500),
 	notes VARCHAR(500),
 	PRIMARY KEY (patient_id),
