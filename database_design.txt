@@ -42,7 +42,7 @@ Table Receptionists as U {
 
 	receptionist_id INT [pk, increment] // auto-increment   
 
-	join_DATE DATE   
+	join_date DATE   
 
 	user_id INT [pk, increment] 
 

@@ -31,7 +31,7 @@ CREATE TABLE Users (
 CREATE TABLE Administrators (
 	administrator_id INT NOT NULL AUTO_INCREMENT,
 	join_date DATE,
-    	user_id int,
+	user_id int,
 	PRIMARY KEY (administrator_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -39,7 +39,7 @@ CREATE TABLE Administrators (
 CREATE TABLE Receptionists (
 	receptionist_id INT NOT NULL AUTO_INCREMENT,
 	join_date DATE,
-    	user_id int,
+	user_id int,
 	PRIMARY KEY (receptionist_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -49,7 +49,7 @@ CREATE TABLE Doctors (
 	join_date DATE,
 	specialty VARCHAR(15),
 	department VARCHAR(15),
-    	user_id int,
+	user_id int,
 	PRIMARY KEY (doctor_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
@@ -61,8 +61,10 @@ CREATE TABLE Patients (
 	medications VARCHAR(150),
 	health_history VARCHAR(500),
 	notes VARCHAR(500),
-    	user_id int,
+	user_id int,
+	doctor_id int,
 	PRIMARY KEY (patient_id),
+	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
 	FOREIGN KEY (user_id) REFERENCES Users(user_id)
 );
 
@@ -71,8 +73,8 @@ CREATE TABLE Appointments (
 	appointment_date DATE,
 	appointment_time TIMESTAMP,
 	notes VARCHAR(500),
-    	doctor_id int,
-    	patient_id int,
+	doctor_id int,
+	patient_id int,
 	PRIMARY KEY (appointment_id),
 	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
 	FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
