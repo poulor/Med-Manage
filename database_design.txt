@@ -11,20 +11,20 @@ Table Users as U {
 	last_name VARCHAR
 
 	gender VARCHAR
+	
+	birth_date DATE
 
 	phone_number VARCHAR 
 	
-	birth_date DATE  
-	
 	street VARCHAR  
 	
-	zip_code VARCHAR
+	zip_code INT
 
 	username VARCHAR   
 
 	password VARCHAR   
 
-	user_type VARCHAR(10)   
+	user_type VARCHAR   
 
 }
 
