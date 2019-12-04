@@ -27,102 +27,38 @@ public class Doctor{
     }
 
     // ==[Mutators]==
-    public void setFirstName(String newFirstName){
-        first_name = newFirstName;
+    public void setSpecialty(String newSpecialty){
+        specialty = newSpecialty;
     }
 
-    public void setMiddleName(String newMiddleName){
-        middle_name = newMiddleName;
+    public void setDepartment(String newDepartment){
+        department = newDepartment;
     }
     
-    public void setLastName(String newLastName){
-        last_name = newLastName;
-    }
-
-    public void setGender(String newGender){
-        gender = newGender;
-    }
-
-    public void setDateOfBirth(String newDateOfBirth) throws Exception{
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-    	formatter = formatter.withLocale( Locale.US );
-        date_of_birth = LocalDate.parse(newDateOfBirth, formatter);
-    }
-
-    public void setAge(int newAge){
-        age = newAge;
-    }
-
-    public void setPhoneNumber(String newPhoneNumber){
-        phone_number = newPhoneNumber;
-    }
-
-    public void setAddress(String newStreetName, int newZipCode ){
-        street = newStreetName;
-        zip_code = newZipCode;
-    }
-
-    public void setPassword(String newPassword){
-        password = newPassword;
-    }
-
-    public void setUserType(String newUserType){
-        user_type = newUserType;
-    }
-
     // ==[Accessors]==
-    public String getFirstName(){
-        return first_name;
+    public String getJoinDate(){
+        return join_date.toString();
     }
 
-    public String getMiddleName(){
-        return middle_name;
+    public String getSpecialty(){
+        return specialty;
     }
     
-    public String getLastName(){
-        return last_name;
+    public String getDepartment(){
+        return department;
     }
 
-    public String getGender(){
-        return gender;
-    }
-
-    public int getAge(){
-        return age;
-    }
-
-    public String getDateOfBirth(){
-    	return date_of_birth.toString();
-    }
-
-    public String getPhoneNumber(){
-        return phone_number;
-    }
-
-    public String getAddress(){
-        return street + " " + zip_code;
-    }
-
-    public String getUserType(){
-        return user_type;
-    }
-
-    public int getUserID(){
-        return user_id;
+    public int getDoctorID(){
+        return doctor_id;
     }
 
     @Override
     public String toString() {
         String stringToReturn = "";
-        stringToReturn += "Name: " + first_name + " " + last_name + "\n";
-        stringToReturn += "Gender: " + gender + "\n";
-        stringToReturn += "Age: " + age + "\n";
-        stringToReturn += "DOB: " + date_of_birth + "\n";
-        stringToReturn += "Phone Number: " + phone_number + "\n";
-        stringToReturn += "Address: " + street + " " + zip_code + "\n";
-        stringToReturn += "User Type: " + user_type + "\n";
-        stringToReturn += "User ID: " + user_id + "\n";
-
+        stringToReturn += "Doctor ID: " + doctor_id + "\n";
+        stringToReturn += "Join Date: " + join_date + "\n";
+        stringToReturn += "Specialty: " + specialty + "\n";
+        stringToReturn += "Department: " + department + "\n";
         
         return stringToReturn;
     }
