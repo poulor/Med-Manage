@@ -29,6 +29,10 @@ public class Administrator{
         return administrator_id;
     }
 
+    public String getJoinDate(){
+        return join_date.toString();
+    }
+
     @Override
     public String toString() {
         String stringToReturn = "";
