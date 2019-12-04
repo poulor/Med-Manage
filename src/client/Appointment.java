@@ -12,7 +12,7 @@ public class Appointment{
     private Time appointment_time;
     private int doctor_id;
     private int patient_id;
-    private String notes;
+    private String notes = "";
    
     // ==[Constructor]==
     // Need to add user_id
@@ -32,103 +32,53 @@ public class Appointment{
     }
 
     // ==[Mutators]==
-    public void setFirstName(String newFirstName){
-        first_name = newFirstName;
-    }
-
-    public void setMiddleName(String newMiddleName){
-        middle_name = newMiddleName;
-    }
-    
-    public void setLastName(String newLastName){
-        last_name = newLastName;
-    }
-
-    public void setGender(String newGender){
-        gender = newGender;
-    }
-
-    public void setDateOfBirth(String newDateOfBirth) throws Exception{
-    	DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+    public void setAppointmentDate(String newAppointmentDate){
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     	formatter = formatter.withLocale( Locale.US );
-        date_of_birth = LocalDate.parse(newDateOfBirth, formatter);
+        appointment_date = LocalDate.parse(newAppointmentDate, formatter);
     }
 
-    public void setAge(int newAge){
-        age = newAge;
+    public void setAppointmentTime(String newAppointmentTime){
+        // TO DO
     }
 
-    public void setPhoneNumber(String newPhoneNumber){
-        phone_number = newPhoneNumber;
-    }
-
-    public void setAddress(String newStreetName, int newZipCode ){
-        street = newStreetName;
-        zip_code = newZipCode;
-    }
-
-    public void setPassword(String newPassword){
-        password = newPassword;
-    }
-
-    public void setUserType(String newUserType){
-        user_type = newUserType;
-    }
-
-    // ==[Accessors]==
-    public String getFirstName(){
-        return first_name;
-    }
-
-    public String getMiddleName(){
-        return middle_name;
+    public void addNotes(String newNote){
+        notes += newNote + "\n";
     }
     
-    public String getLastName(){
-        return last_name;
+    // ==[Accessors]==
+    public String getAppointmentDate(){
+        return appointment_date.toString();
     }
 
-    public String getGender(){
-        return gender;
+    /* public String getAppointmentTime(){
+        // return appointment_time.toString();
+
+        // TO DO
+    } */
+    
+    public int getDoctorID(){
+        return doctor_id;
     }
 
-    public int getAge(){
-        return age;
+    public int getPatientID(){
+        return patient_id;
     }
 
-    public String getDateOfBirth(){
-    	return date_of_birth.toString();
-    }
-
-    public String getPhoneNumber(){
-        return phone_number;
-    }
-
-    public String getAddress(){
-        return street + " " + zip_code;
-    }
-
-    public String getUserType(){
-        return user_type;
-    }
-
-    public int getUserID(){
-        return user_id;
+    public String getNotes(){
+        return notes;
     }
 
     @Override
     public String toString() {
         String stringToReturn = "";
-        stringToReturn += "Name: " + first_name + " " + last_name + "\n";
-        stringToReturn += "Gender: " + gender + "\n";
-        stringToReturn += "Age: " + age + "\n";
-        stringToReturn += "DOB: " + date_of_birth + "\n";
-        stringToReturn += "Phone Number: " + phone_number + "\n";
-        stringToReturn += "Address: " + street + " " + zip_code + "\n";
-        stringToReturn += "User Type: " + user_type + "\n";
-        stringToReturn += "User ID: " + user_id + "\n";
+        stringToReturn += "Appointment ID: " + appointment_id + "\n";
+        stringToReturn += "Appointment Date: " + appointment_date + "\n";
+        stringToReturn += "Appointment Time: " + appointment_time + "\n";
+        stringToReturn += "Doctor ID: " + doctor_id + "\n";
+        stringToReturn += "Patient ID: " + patient_id + "\n";
+        stringToReturn += "Notes: " + "\n" + notes + "\n";
 
-        
         return stringToReturn;
     }
     
