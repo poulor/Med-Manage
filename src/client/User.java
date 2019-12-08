@@ -16,6 +16,8 @@ public class User {
 	private LocalDate date_of_birth;
 	private String phone_number;
 	private String street;
+	private String city;
+	private String state;
 	private int zip_code;
 	public String email;
 	private String username;
@@ -24,7 +26,7 @@ public class User {
 
 	// ==[Constructor]==
 	public User(String first_name, String middle_name, String last_name, String gender, String date_of_birth, 
-			String phone_number, String street, int zip_code, String email, String username, String password, String user_type) {
+			String phone_number, String street, String city, String state, int zip_code, String email, String username, String password, String user_type) {
 
 		this.first_name = first_name;
 		this.middle_name = middle_name;
@@ -40,6 +42,8 @@ public class User {
 
 		this.phone_number = phone_number;
 		this.street = street;
+		this.city = city;
+		this.state = state;
 		this.zip_code = zip_code;
 
 		this.email = email;
@@ -86,8 +90,19 @@ public class User {
 		phone_number = newPhoneNumber;
 	}
 
-	public void setAddress(String newStreetName, int newZipCode ){
+	public void setStreet(String newStreetName ){
 		street = newStreetName;
+	}
+	
+	public void setCity(String newCityName ){
+		city = newCityName;
+	}
+	
+	public void setState(String newStateName ){
+		state = newStateName;
+	}
+	
+	public void setZipCode(int newZipCode ){
 		zip_code = newZipCode;
 	}
 
@@ -132,8 +147,24 @@ public class User {
 		return phone_number;
 	}
 
-	public String getAddress(){
-		return street + " " + zip_code;
+	public String getStreet(){
+		return street;
+	}
+	
+	public String getCity(){
+		return city;
+	}
+	
+	public String getState(){
+		return state;
+	}
+
+	public int getZipCode(){
+		return zip_code;
+	}
+	
+	public String getAddress() {
+		return street + " " + city + " " + state + " " + zip_code;
 	}
 	
 	public String getEmailAddress() {
@@ -164,7 +195,7 @@ public class User {
 		stringToReturn += "Age: " + age + "\n";
 		stringToReturn += "DOB: " + date_of_birth + "\n";
 		stringToReturn += "Phone Number: " + phone_number + "\n";
-		stringToReturn += "Address: " + street + " " + zip_code + "\n";
+		stringToReturn += "Address: " + getAddress() + "\n";
 		stringToReturn += "User Type: " + user_type + "\n";
 		stringToReturn += "User ID: " + user_id + "\n";
 
