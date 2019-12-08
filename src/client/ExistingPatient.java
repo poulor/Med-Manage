@@ -1,0 +1,106 @@
+package client;
+
+import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.geometry.HPos;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
+import javafx.stage.Stage;
+
+public class ExistingPatient extends Application
+{
+	Patient p = new Patient("John", "A", "Doe", "Male", "10/31/2003", "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
+	
+	private TextField firstName = new TextField();
+	private TextField middleInitial = new TextField();
+	private TextField lastName = new TextField();
+	private TextField eMail = new TextField();
+	private TextField dob = new TextField();
+	private TextField gender = new TextField();
+	private TextField address = new TextField();
+	private TextField city = new TextField();
+	private TextField state = new TextField();
+	private TextField zip = new TextField();
+	private TextField phone = new TextField();
+	private TextArea history = new TextArea();
+	
+	private Button findPatient = new Button("Find Patient");
+	
+	
+	@Override
+	
+	public void start(Stage primaryStage)
+	{
+		
+		middleInitial.setPrefWidth(30);
+		middleInitial.setMaxWidth(30); 
+		
+		GridPane pane = new GridPane();
+		pane.setHgap(5);
+		pane.setVgap(5);
+		pane.setAlignment(Pos.CENTER);
+		pane.add(new Label("First Name: "), 0, 0);
+		pane.add(firstName, 1, 0);
+		pane.add(new Label("MI: "), 2, 0);
+		pane.add(middleInitial, 3, 0);
+		pane.add(new Label("Last Name: "), 0, 1);
+		pane.add(lastName, 1, 1);
+		pane.add(new Label("Gender: "), 0, 2);
+		pane.add(gender, 1, 2);
+		pane.add(new Label("Date of Birth: "), 0, 3);
+		pane.add(dob, 1, 3);
+		pane.add(new Label("Email: "), 0, 4);
+		pane.add(eMail, 1, 4);
+		pane.add(new Label("Address: "), 0, 5);
+		pane.add(address, 1, 5);
+		pane.add(new Label("City: "), 0, 6);
+		pane.add(city, 1, 6);
+		pane.add(new Label("Zip: "), 0, 7);
+		pane.add(zip, 1, 7);
+		pane.add(new Label("State: "), 0, 8);
+		pane.add(state, 1, 8);
+		pane.add(new Label("Phone#: "), 0, 9);
+		pane.add(phone, 1, 9);
+		pane.add(new Label("History: "), 0, 10);
+		pane.add(history, 1, 10);
+		pane.add(findPatient, 1,11);
+	    GridPane.setHalignment(findPatient, HPos.RIGHT);
+	    
+	    findPatient.setOnAction(e -> pullInfo());
+	    
+	    Scene scene = new Scene(pane, 600, 400);
+		primaryStage.setTitle("PatientInfo");
+		primaryStage.setScene(scene);
+		primaryStage.show();
+	}
+	
+	private void pullInfo()
+	{
+		 String fName = firstName.getText();
+		 String lName = lastName.getText();
+		 
+		 middleInitial.setText(String.format("", p.getMiddleName()));
+		 eMail.setText(String.format("", p.getEmailAddress()));
+		 dob.setText(String.format("", p.getDateOfBirth()));
+		 gender.setText(String.format("", p.getGender()));
+		 address.setText(String.format("", p.getStreet()));
+		 city.setText(String.format("", p.getCity()));
+		 state.setText(String.format("", p.getState()));
+		 zip.setText(String.format("", p.getZipCode()));
+		 phone.setText(String.format("", p.getPhoneNumber()));
+		 history.setText(String.format("", p.getHealthHistory()));
+	}
+	
+	public static void main(String[] args) 
+	{
+		launch(args);
+	}
+}

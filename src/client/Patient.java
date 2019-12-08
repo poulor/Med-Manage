@@ -16,11 +16,7 @@ public class Patient extends User {
 			String street, String city, String state, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
 			String medications, String healthHistory, int doctor_id) {
 		
-<<<<<<< HEAD
-		super(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state,  zip_code, email, username, password, user_type);
-=======
 		super(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type);
->>>>>>> branch 'master' of https://github.com/poulor/MedicalClientApplication.git
 		this.heightInInches = heightInInches;
 		this.weightInPounds = weightInPounds;
 		this.medications = medications;
