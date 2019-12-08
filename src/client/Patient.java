@@ -85,11 +85,15 @@ public class Patient extends User {
         stringToReturn += "DOB: " + super.getDateOfBirth() + "\n";
         stringToReturn += "Height: " + heightInInches + " in." + "\n";
         stringToReturn += "Weight: " + weightInPounds + " lb." + "\n";
-        stringToReturn += "Address: " + super.getAddress() + "\n";
+		stringToReturn += "Address: " + super.getAddress() + "\n";
+        stringToReturn += "Email: " + email + "\n";
 		stringToReturn += "Phone Number: " + super.getPhoneNumber() + "\n";
         stringToReturn += "Medication(s): " + medications + "\n";
         stringToReturn += "Health History: " + healthHistory + "\n";
-        stringToReturn += "Notes: " + notes + "\n";
+		stringToReturn += "Notes: " + notes + "\n";
+		stringToReturn += "User Type: " + super.getUserType() + "\n";
+		stringToReturn += "User ID: " + super.getUserID() + "\n";
+		
 
         return stringToReturn;
     }

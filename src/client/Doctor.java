@@ -58,7 +58,16 @@ public class Doctor extends User{
     @Override
     public String toString() {
         String stringToReturn = "";
+        stringToReturn += "Name: " + super.getFirstName() + " " + super.getLastName() + "\n";
+        stringToReturn += "Gender: " + super.getGender() + "\n";
+        stringToReturn += "Age: " + super.getAge() + "\n";
+        stringToReturn += "DOB: " + super.getDateOfBirth() + "\n";
+		stringToReturn += "Address: " + super.getAddress() + "\n";
+        stringToReturn += "Email: " + super.getEmailAddress() + "\n";
+        stringToReturn += "Phone Number: " + super.getPhoneNumber() + "\n";
+        stringToReturn += "User Type: " + super.getUserType() + "\n";
         stringToReturn += "Doctor ID: " + doctor_id + "\n";
+		stringToReturn += "User ID: " + super.getUserID() + "\n";
         stringToReturn += "Join Date: " + join_date + "\n";
         stringToReturn += "Specialty: " + specialty + "\n";
         stringToReturn += "Department: " + department + "\n";
