@@ -23,7 +23,7 @@ public class User {
 
 	// ==[Constructor]==
 	public User(String first_name, String middle_name, String last_name, String gender, String date_of_birth, 
-			String phone_number, String street, int zip_code, String username, String password, String user_type) {
+			String phone_number, String street, int zip_code, String email, String username, String password, String user_type) {
 
 		this.first_name = first_name;
 		this.middle_name = middle_name;
@@ -40,6 +40,8 @@ public class User {
 		this.phone_number = phone_number;
 		this.street = street;
 		this.zip_code = zip_code;
+
+		this.email = email;
 		this.username = username;
 		this.password = password;
 		this.user_type = user_type;
@@ -86,6 +88,10 @@ public class User {
 	public void setAddress(String newStreetName, int newZipCode ){
 		street = newStreetName;
 		zip_code = newZipCode;
+	}
+
+	public void setEmailAddress(String newEmailAddress){
+		email = newEmailAddress;
 	}
 
 	public void setPassword(String newPassword){

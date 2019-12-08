@@ -1,6 +1,7 @@
 package client;
 
 public class Patient extends User {
+	static int number_of_patients = 0;
 	private int patient_id;
 	private double heightInInches;
 	private double weightInPounds;
@@ -20,7 +21,10 @@ public class Patient extends User {
 		this.weightInPounds = weightInPounds;
 		this.medications = medications;
         this.healthHistory = healthHistory;
-        this.doctor_id = doctor_id;
+		this.doctor_id = doctor_id;
+		
+		Patient.number_of_patients += 1;
+		this.patient_id = Patient.number_of_patients;
 	}
 
 	public void setHeight(double newHeight){
@@ -71,23 +75,24 @@ public class Patient extends User {
 		return patient_id;
 	}
 
-	/* @Override
+
+	@Override
     public String toString() {
         String stringToReturn = "";
-        stringToReturn += "Name: " + firstName + " " + lastName + "\n";
-        stringToReturn += "Gender: " + gender + "\n";
-        stringToReturn += "Age: " + age + "\n";
-        stringToReturn += "DOB: " + dateOfBirth + "\n";
-        stringToReturn += "Height: " + height + " in." + "\n";
-        stringToReturn += "Weight: " + weight + "lb." + "\n";
-        stringToReturn += "Address: " + address + "\n";
-        stringToReturn += "Phone Number: " + phoneNumber + "\n";
+        stringToReturn += "Name: " + super.getFirstName() + " " + super.getLastName() + "\n";
+        stringToReturn += "Gender: " + super.getGender() + "\n";
+        stringToReturn += "Age: " + super.getAge() + "\n";
+        stringToReturn += "DOB: " + super.getDateOfBirth() + "\n";
+        stringToReturn += "Height: " + heightInInches + " in." + "\n";
+        stringToReturn += "Weight: " + weightInPounds + " lb." + "\n";
+        stringToReturn += "Address: " + super.getAddress() + "\n";
+		stringToReturn += "Phone Number: " + super.getPhoneNumber() + "\n";
         stringToReturn += "Medication(s): " + medications + "\n";
         stringToReturn += "Health History: " + healthHistory + "\n";
         stringToReturn += "Notes: " + notes + "\n";
 
         return stringToReturn;
-    } */
+    }
 
 
 }
