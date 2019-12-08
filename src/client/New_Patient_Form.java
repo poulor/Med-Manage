@@ -31,7 +31,7 @@ public class New_Patient_Form extends Application
 					"Other"
 					);
 	private ComboBox<String> gender = new ComboBox<String>(genders);
-	private TextField address = new TextField();
+	private TextField street = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
@@ -68,14 +68,14 @@ public class New_Patient_Form extends Application
 		pane.add(dob, 1, 3);
 		pane.add(new Label("Email: "), 0, 4);
 		pane.add(eMail, 1, 4);
-		pane.add(new Label("Address: "), 0, 5);
-		pane.add(address, 1, 5);
+		pane.add(new Label("Street Address: "), 0, 5);
+		pane.add(street, 1, 5);
 		pane.add(new Label("City: "), 0, 6);
 		pane.add(city, 1, 6);
-		pane.add(new Label("Zip: "), 0, 7);
-		pane.add(zip, 1, 7);
-		pane.add(new Label("State: "), 0, 8);
-		pane.add(state, 1, 8);
+		pane.add(new Label("State: "), 0, 7);
+		pane.add(state, 1, 7);
+		pane.add(new Label("Zip: "), 0, 8);
+		pane.add(zip, 1, 8);
 		pane.add(new Label("Phone#: "), 0, 9);
 		pane.add(phone, 1, 9);
 		pane.add(new Label("History: "), 0, 10);
@@ -96,8 +96,9 @@ public class New_Patient_Form extends Application
 		
 		System.out.println("User Created!");
 		// Create a loan object.
-		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), (address.getText() + " " + city.getText() + " " + state.getText()), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
-//		String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
+		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
+//		Patient q = new Patient(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type, heightInInches, weightInPounds, medications, healthHistory, doctor_id)
+		// String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
 //		String street, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
 //		String medications, String healthHistory, int doctor_id)
 		users.add(p);
