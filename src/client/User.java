@@ -16,6 +16,8 @@ public class User {
 	private LocalDate date_of_birth;
 	private String phone_number;
 	private String street;
+	private String city;
+	private String state;
 	private int zip_code;
 	public String email;
 	private String username;
@@ -24,7 +26,7 @@ public class User {
 
 	// ==[Constructor]==
 	public User(String first_name, String middle_name, String last_name, String gender, String date_of_birth, 
-			String phone_number, String street, int zip_code, String email, String username, String password, String user_type) {
+			String phone_number, String street, String city, String state, int zip_code, String email, String username, String password, String user_type) {
 
 		this.first_name = first_name;
 		this.middle_name = middle_name;
@@ -133,7 +135,19 @@ public class User {
 	}
 
 	public String getAddress(){
-		return street + " " + zip_code;
+		return street;
+	}
+	
+	public String getCity(){
+		return city;
+	}
+	
+	public String getState(){
+		return state;
+	}
+	
+	public int getZipCode(){
+		return zip_code;
 	}
 	
 	public String getEmailAddress() {
