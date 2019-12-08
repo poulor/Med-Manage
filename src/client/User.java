@@ -140,6 +140,14 @@ public class User {
 		return email;
 	}
 
+	public String getUsername(){
+		return username;
+	}
+
+	public String getPassword(){
+		return password;
+	}
+
 	public String getUserType(){
 		return user_type;
 	}
