@@ -1,5 +1,7 @@
 package client;
 
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,25 +30,28 @@ public class New_Patient_Form extends Application
 					"Male",
 					"Other"
 					);
-	private ComboBox gender = new ComboBox(genders);
+	private ComboBox<String> gender = new ComboBox<String>(genders);
 	private TextField address = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
 	private TextField phone = new TextField();
 	private TextArea history = new TextArea();
-	
+
 	private Button newPatient = new Button("Create New Patient");
 	
-	
+	private ArrayList<User> users = new ArrayList<User>();
+	private ArrayList<Patient> patients = new ArrayList<Patient>();
+
+
 	@Override
-	
+
 	public void start(Stage primaryStage)
 	{
-		
+
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
-		
+
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);
@@ -76,14 +81,32 @@ public class New_Patient_Form extends Application
 		pane.add(new Label("History: "), 0, 10);
 		pane.add(history, 1, 10);
 		pane.add(newPatient, 1,11);
-	    GridPane.setHalignment(newPatient, HPos.RIGHT);
-	    
-	    Scene scene = new Scene(pane, 600, 400);
+		GridPane.setHalignment(newPatient, HPos.RIGHT);
+
+		newPatient.setOnAction(e -> createNewPatient());
+
+		Scene scene = new Scene(pane, 600, 400);
 		primaryStage.setTitle("New Patient Form");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
+
+	private void createNewPatient() {
+		// Get values from text fields
+		
+		System.out.println("User Created!");
+		// Create a loan object.
+		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), (address.getText() + " " + city.getText() + " " + state.getText()), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
+//		String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
+//		String street, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
+//		String medications, String healthHistory, int doctor_id)
+		users.add(p);
+		patients.add(p);
+		
+		System.out.println(users.get(0));
+		System.out.println(patients.get(0));
+	}
+
 	public static void main(String[] args) 
 	{
 		launch(args);
