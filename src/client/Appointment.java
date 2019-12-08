@@ -15,7 +15,7 @@ public class Appointment{
     private String notes = "";
    
     // ==[Constructor]==
-    // Need to add user_id
+    
     public Appointment(String appointment_date, String appointment_time, int doctor_id, int patient_id) {
 
         // Formatting join_date string to LocalDate format

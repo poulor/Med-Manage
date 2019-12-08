@@ -4,27 +4,29 @@ Table Users as U {
 
 	user_id INT [pk, increment] // auto-increment   
 
-	first_name VARCHAR
+	first_name VARCHAR(25)
 
-	middle_name VARCHAR
+	middle_name VARCHAR(1)
 
-	last_name VARCHAR
+	last_name VARCHAR(25)
 
-	gender VARCHAR
+	gender VARCHAR(6)
 	
 	birth_date DATE
 
-	phone_number VARCHAR 
+	phone_number VARCHAR(11) 
 	
-	street VARCHAR  
+	street VARCHAR(25)  
 	
-	zip_code INT
+	zip_code INT(5)
 
-	username VARCHAR   
+	email VARCHAR(30)
 
-	password VARCHAR   
+	username VARCHAR(10)   
 
-	user_type VARCHAR   
+	password VARCHAR(16)   
+
+	user_type VARCHAR(20)   
 
 }
 
@@ -54,9 +56,9 @@ Table Doctors as U {
 
 	join_date DATE
 
-	specialty VARCHAR
+	specialty VARCHAR(15)
 
-	department VARCHAR   
+	department VARCHAR(15)   
 
 	user_id INT [pk, increment]   
 
@@ -70,11 +72,11 @@ Table Patients as U {
 
 	weight DOUBLE
 
-	medications VARCHAR
+	medications VARCHAR(500)
 
-	health_history VARCHAR
+	health_history VARCHAR(500)
 
-	notes VARCHAR
+	notes VARCHAR(500)
 	
 	doctor_id INT [pk, increment]
 
@@ -90,7 +92,7 @@ Table Appointments as U {
 
 	appointment_time TIMESTAMP  
 
-	notes VARCHAR  
+	notes VARCHAR(500)  
 
 	doctor_id INT [pk, increment]   
 
