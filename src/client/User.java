@@ -42,6 +42,8 @@ public class User {
 
 		this.phone_number = phone_number;
 		this.street = street;
+		this.city = city;
+		this.state = state;
 		this.zip_code = zip_code;
 
 		this.email = email;
@@ -88,8 +90,19 @@ public class User {
 		phone_number = newPhoneNumber;
 	}
 
-	public void setAddress(String newStreetName, int newZipCode ){
+	public void setStreet(String newStreetName ){
 		street = newStreetName;
+	}
+	
+	public void setCity(String newCityName ){
+		city = newCityName;
+	}
+	
+	public void setState(String newStateName ){
+		state = newStateName;
+	}
+	
+	public void setZipCode(int newZipCode ){
 		zip_code = newZipCode;
 	}
 
@@ -134,7 +147,7 @@ public class User {
 		return phone_number;
 	}
 
-	public String getAddress(){
+	public String getStreet(){
 		return street;
 	}
 	
@@ -145,13 +158,25 @@ public class User {
 	public String getState(){
 		return state;
 	}
-	
+
 	public int getZipCode(){
 		return zip_code;
 	}
 	
+	public String getAddress() {
+		return street + " " + city + " " + state + " " + zip_code;
+	}
+	
 	public String getEmailAddress() {
 		return email;
+	}
+
+	public String getUsername(){
+		return username;
+	}
+
+	public String getPassword(){
+		return password;
 	}
 
 	public String getUserType(){
@@ -170,7 +195,7 @@ public class User {
 		stringToReturn += "Age: " + age + "\n";
 		stringToReturn += "DOB: " + date_of_birth + "\n";
 		stringToReturn += "Phone Number: " + phone_number + "\n";
-		stringToReturn += "Address: " + street + " " + zip_code + "\n";
+		stringToReturn += "Address: " + getAddress() + "\n";
 		stringToReturn += "User Type: " + user_type + "\n";
 		stringToReturn += "User ID: " + user_id + "\n";
 
