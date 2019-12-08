@@ -4,7 +4,7 @@ import java.util.Locale;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;  
 
-public class Doctor{
+public class Doctor extends User{
     static int number_of_doctors = 0;
     private int doctor_id;
     private LocalDate join_date;
@@ -13,7 +13,10 @@ public class Doctor{
    
     // ==[Constructor]==
     // Need to add user_id
-    public Doctor(String join_date, String specialty, String department) {
+    public Doctor(String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
+    String street, int zip_code, String username, String password, String user_type, String join_date, String specialty, String department) {
+
+		super(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, zip_code, username, password, user_type);
 
         // Formatting join_date string to LocalDate format
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
