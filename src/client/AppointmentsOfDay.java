@@ -24,7 +24,7 @@ public class AppointmentsOfDay extends Application
         TableColumn<Appointment, String> lastNameCol = new TableColumn<>("Last Name");
         lastNameCol.setCellValueFactory(new PropertyValueFactory<>("lastName"));
         TableColumn<Appointment, String> timeCol = new TableColumn<>("Time");
-        timeCol.setCellValueFactory(new PropertyValueFactory<>("time"));
+        timeCol.setCellValueFactory(new PropertyValueFactory<>("appointment_time"));
 
         appTable.getColumns().addAll(firstNameCol, lastNameCol, timeCol);
 
