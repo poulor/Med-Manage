@@ -17,6 +17,7 @@ public class User {
 	private String phone_number;
 	private String street;
 	private int zip_code;
+	public String email;
 	private String username;
 	private String password;
 	private String user_type;
@@ -133,6 +134,10 @@ public class User {
 
 	public String getAddress(){
 		return street + " " + zip_code;
+	}
+	
+	public String getEmailAddress() {
+		return email;
 	}
 
 	public String getUserType(){
