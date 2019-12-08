@@ -87,16 +87,16 @@ public class ExistingPatient extends Application
 		 String fName = firstName.getText();
 		 String lName = lastName.getText();
 		 
-		 middleInitial.setText(String.format("", p.getMiddleName()));
-		 eMail.setText(String.format("", p.getEmailAddress()));
-		 dob.setText(String.format("", p.getDateOfBirth()));
-		 gender.setText(String.format("", p.getGender()));
-		 address.setText(String.format("", p.getStreet()));
-		 city.setText(String.format("", p.getCity()));
-		 state.setText(String.format("", p.getState()));
-		 zip.setText(String.format("", p.getZipCode()));
-		 phone.setText(String.format("", p.getPhoneNumber()));
-		 history.setText(String.format("", p.getHealthHistory()));
+		 middleInitial.setText(String.format("%s", p.getMiddleName()));
+		 eMail.setText(String.format("%s", p.getEmailAddress()));
+		 dob.setText(String.format("%s", p.getDateOfBirth()));
+		 gender.setText(String.format("%s", p.getGender()));
+		 address.setText(String.format("%s", p.getStreet()));
+		 city.setText(String.format("%s", p.getCity()));
+		 state.setText(String.format("%s", p.getState()));
+		 zip.setText(String.format("%s", p.getZipCode()));
+		 phone.setText(String.format("%s", p.getPhoneNumber()));
+		 history.setText(String.format("%s", p.getHealthHistory()));
 	}
 	
 	public static void main(String[] args) 
