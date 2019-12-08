@@ -1,73 +1,77 @@
 package client;
 
-public class Patient {
-    private int patient_id;
-    private double heightInInches;
-    private double weightInPounds;
-    private String medications = "";
-    private String healthHistory = "\n";
-    private String notes = "\n";
+public class Patient extends User {
+	private int patient_id;
+	private double heightInInches;
+	private double weightInPounds;
+	private String medications = "";
+	private String healthHistory = "\n";
+	private String notes = "\n";
     private int doctor_id;
-    private int user_id;
-
-    // add automatic age calculator?
-
-    public Patient(double heightInInches, double weightInPounds, String medications, String healthHistory) {
-        this.heightInInches = heightInInches;
-        this.weightInPounds = weightInPounds;
-        this.medications = medications;
-        this.healthHistory = healthHistory;
-    }
     
-    public void setHeight(double newHeight){
-    	heightInInches = newHeight;
-    }
+	// add automatic age calculator?
 
-    public void setWeight(double newWeight){
-    	weightInPounds = newWeight;
-    }
+	public Patient(String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
+			String street, int zip_code, String username, String password, String user_type, double heightInInches, double weightInPounds, 
+			String medications, String healthHistory, int doctor_id) {
+		
+		super(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, zip_code, username, password, user_type);
+		this.heightInInches = heightInInches;
+		this.weightInPounds = weightInPounds;
+		this.medications = medications;
+        this.healthHistory = healthHistory;
+        this.doctor_id = doctor_id;
+	}
 
-    public void addMedications(String updatedMeds){
-        medications += updatedMeds + ", ";
-    }
+	public void setHeight(double newHeight){
+		heightInInches = newHeight;
+	}
 
-    public void addHealthHistory(String updatedHistory){
-        healthHistory += updatedHistory + "\n";
-    }
+	public void setWeight(double newWeight){
+		weightInPounds = newWeight;
+	}
 
-    public void addNotes(String newNote){
-        notes += newNote + "\n";
-    }
+	public void addMedications(String updatedMeds){
+		medications += updatedMeds + ", ";
+	}
 
-    public double getHeight(){
-    	return heightInInches;
-    }
+	public void addHealthHistory(String updatedHistory){
+		healthHistory += updatedHistory + "\n";
+	}
 
-    public double getWeight(){
-    	return weightInPounds;
-    }
+	public void addNotes(String newNote){
+		notes += newNote + "\n";
+	}
 
-    public String getMedications(){
-        return medications;
-    }
+	public double getHeight(){
+		return heightInInches;
+	}
 
-    public String getHealthHistory(){
-        return healthHistory;
-    }
+	public double getWeight(){
+		return weightInPounds;
+	}
 
-    public String getNotes(){
-        return notes;
-    }
+	public String getMedications(){
+		return medications;
+	}
 
-    public int getDoctorID(){
-        return doctor_id;
-    }
+	public String getHealthHistory(){
+		return healthHistory;
+	}
 
-    public int getPatientID(){
-        return patient_id;
-    }
+	public String getNotes(){
+		return notes;
+	}
 
-    /* @Override
+	public int getDoctorID(){
+		return doctor_id;
+	}
+
+	public int getPatientID(){
+		return patient_id;
+	}
+
+	/* @Override
     public String toString() {
         String stringToReturn = "";
         stringToReturn += "Name: " + firstName + " " + lastName + "\n";
@@ -81,9 +85,9 @@ public class Patient {
         stringToReturn += "Medication(s): " + medications + "\n";
         stringToReturn += "Health History: " + healthHistory + "\n";
         stringToReturn += "Notes: " + notes + "\n";
-        
+
         return stringToReturn;
     } */
-    
+
 
 }
