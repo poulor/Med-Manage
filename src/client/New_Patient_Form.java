@@ -31,11 +31,7 @@ public class New_Patient_Form extends Application
 					"Other"
 					);
 	private ComboBox<String> gender = new ComboBox<String>(genders);
-<<<<<<< HEAD
 	private TextField street = new TextField();
-=======
-	private TextField address = new TextField();
->>>>>>> e010922e3ee02375927075386c6d643600ebecdb
 	private TextField city = new TextField();
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
