@@ -1,5 +1,12 @@
 package client;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -17,8 +24,10 @@ import javafx.stage.Stage;
 
 public class ExistingPatient extends Application
 {
-	Patient p = new Patient("John", "A", "Doe", "Male", "10/31/2003", "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
 	
+	private ArrayList<Patient> patientList = new ArrayList<Patient>();
+		
+	private PreparedStatement preparedStatement;
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
@@ -39,7 +48,8 @@ public class ExistingPatient extends Application
 	
 	public void start(Stage primaryStage)
 	{
-		
+		Patient p = new Patient("John", "A", "Doe", "Male", "10/31/2003", "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
+		patientList.add(p);
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 		
@@ -82,12 +92,39 @@ public class ExistingPatient extends Application
 		primaryStage.show();
 	}
 	
+	
+	
+	private void initializeDB() {    
+		  try {
+		      Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
+		       // Establish a connection
+		      Connection connection = DriverManager.getConnection
+		        ("jdbc:mysql://localhost/javabook", "scott", "tiger");
+		      System.out.println("Database connected");
+		      String queryString = "select user_id " +
+		        "where User.first_name = ? and User.last_name = ? ";
+			//test values- 444111110, 11111
+		      // Create a statement
+		      preparedStatement = connection.prepareStatement(queryString);    
+			  }
+		    catch (Exception ex) {  ex.printStackTrace();  }  }
+		 
 	private void pullInfo()
 	{
 		 String fName = firstName.getText();
 		 String lName = lastName.getText();
+		 try { preparedStatement.setString(1,  fName);
+		 preparedStatement.setString(2,  lName);
 		 
-		 middleInitial.setText(String.format("%s", p.getMiddleName()));
+		 ResultSet Id = preparedStatement.executeQuery();
+		 
+		 System.out.println(Id);
+		 
+		 
+		 }
+		 finally { System.out.println("failed");}
+		 /*
+		 middleInitial.setText(String.format("%s", patientList.get(Id - 1).getMiddleName()));
 		 eMail.setText(String.format("%s", p.getEmailAddress()));
 		 dob.setText(String.format("%s", p.getDateOfBirth()));
 		 gender.setText(String.format("%s", p.getGender()));
@@ -97,6 +134,7 @@ public class ExistingPatient extends Application
 		 zip.setText(String.format("%s", p.getZipCode()));
 		 phone.setText(String.format("%s", p.getPhoneNumber()));
 		 history.setText(String.format("%s", p.getHealthHistory()));
+		 */
 	}
 	
 	public static void main(String[] args) 
