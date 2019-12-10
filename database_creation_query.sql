@@ -20,7 +20,7 @@ CREATE TABLE Users (
 	gender VARCHAR(6), 
 	birth_date DATE,
 	phone_number VARCHAR(11),  
-	street VARCHAR(25),
+	street VARCHAR(50),
 	city VARCHAR(25),
 	US_state VARCHAR(25),
 	zip_code INT(5),

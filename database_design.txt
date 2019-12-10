@@ -16,9 +16,9 @@ Table Users as U {
 
 	phone_number VARCHAR(11) 
 	
-	street VARCHAR(25)
+	street VARCHAR(50)
 
-	city VARCHAR(25)
+	city VARCHAR(50)
 
 	US_state VARCHAR(25)  
 	
