@@ -35,7 +35,7 @@ public class AppointmentsOfDay extends Application
 		
 		Button ShowAppointments = new Button("Show Appointments");
 	    HBox hBox = new HBox(5);
-	    hBox.getChildren().addAll(new Label("Date (MM/DD/YYYY): "), date, 
+	    hBox.getChildren().addAll(new Label("Date (YYYY-MM-DD): "), date, 
 	      (ShowAppointments));
 
 	    VBox vBox = new VBox(10);
@@ -71,9 +71,10 @@ public class AppointmentsOfDay extends Application
 		      Connection connection = DriverManager.getConnection
 		        ("jdbc:mysql://localhost/MedicalClient", "test_user", "password");
 		      System.out.println("Database connected");
-		      String queryString = "select Users.first_name, " +
-		        "Users.last_name, from Appointments, Users " +
-		        "where Appointments.appointment_date = ? ";
+		      String queryString = "select first_name, " +
+		        "last_name from Appointments, Patients, Users " +
+		        "where Appointments.appointment_date = ? and Appointments.patient_id = Patients.patient_id " 
+		        + "and Patients.user_id = Users.user_id";
 		      preparedStatement = connection.prepareStatement(queryString);    
 			  }
 		    catch (Exception ex) {  ex.printStackTrace();  }  }
@@ -84,8 +85,8 @@ public class AppointmentsOfDay extends Application
 	       ResultSet rset = preparedStatement.executeQuery();
 
 	      if (rset.next()) {
-	        String lastName = rset.getString(1);
-	        String firstName = rset.getString(3);
+	        String firstName = rset.getString(1);
+	        String lastName = rset.getString(2);
 	        //String appointment_time = rset.getString(3);
 
 
