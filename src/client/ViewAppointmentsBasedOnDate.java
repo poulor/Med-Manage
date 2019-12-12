@@ -16,7 +16,7 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
-public class ViewAppointmentsOfTheDay extends Application
+public class ViewAppointmentsBasedOnDate extends Application
 {
 	private PreparedStatement preparedStatement;
 	private TextField date = new TextField();

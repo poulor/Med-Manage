@@ -19,7 +19,7 @@ import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class Login_Form extends Application 
+public class LoginPage extends Application 
 {
 	private TextField un = new TextField();
 	private TextField pw = new TextField();
@@ -30,7 +30,7 @@ public class Login_Form extends Application
 					"Receptionist",
 					"Administrator"
 					);
-	private ComboBox usertype = new ComboBox(userType);
+	private ComboBox<String> usertype = new ComboBox<String>(userType);
 	private Button signIn = new Button("Sign In");
 	
 	@Override

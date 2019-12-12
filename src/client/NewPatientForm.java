@@ -3,10 +3,13 @@ package client;
 import java.util.ArrayList;
 
 import javafx.application.Application;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -20,7 +23,10 @@ public class NewPatientForm extends Application
 	private TextField lastName = new TextField();
 	private TextField eMail = new TextField();
 	private TextField dob = new TextField();
-	private TextField gender = new TextField();
+	private ObservableList<String> genderList = FXCollections.observableArrayList( "Female", "Male", "Other" );
+	private ComboBox<String> gender = new ComboBox<String>(genderList);
+	
+//	private TextField gender = new TextField();
 	private TextField street = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
@@ -28,7 +34,7 @@ public class NewPatientForm extends Application
 	private TextField phone = new TextField();
 	private TextArea history = new TextArea();
 
-	private Button newPatient = new Button("Create New Patient");
+	private Button newPatient = new Button("Add New Patient");
 	
 	private ArrayList<User> users = new ArrayList<User>();
 	private ArrayList<Patient> patients = new ArrayList<Patient>();
@@ -68,14 +74,14 @@ public class NewPatientForm extends Application
 		pane.add(zip, 1, 8);
 		pane.add(new Label("Phone#: "), 0, 9);
 		pane.add(phone, 1, 9);
-		pane.add(new Label("History: "), 0, 10);
+		pane.add(new Label("Health History: "), 0, 10);
 		pane.add(history, 1, 10);
 		pane.add(newPatient, 1,11);
 		GridPane.setHalignment(newPatient, HPos.RIGHT);
 
 		newPatient.setOnAction(e -> createNewPatient());
 
-		Scene scene = new Scene(pane, 600, 400);
+		Scene scene = new Scene(pane, 1000, 1000);
 		primaryStage.setTitle("New Patient Form");
 		primaryStage.setScene(scene);
 		primaryStage.show();
@@ -84,7 +90,7 @@ public class NewPatientForm extends Application
 	private void createNewPatient() {
 		// Get values from text fields
 		
-		System.out.println("User Created!");
+//		System.out.println("User Created!");
 		// Create a loan object.
 //		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
 //		Patient q = new Patient(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type, heightInInches, weightInPounds, medications, healthHistory, doctor_id)
@@ -94,8 +100,8 @@ public class NewPatientForm extends Application
 //		users.add(p);
 //		patients.add(p);
 		
-		System.out.println(users.get(0));
-		System.out.println(patients.get(0));
+//		System.out.println(users.get(0));
+//		System.out.println(patients.get(0));
 	}
 
 	public static void main(String[] args) 

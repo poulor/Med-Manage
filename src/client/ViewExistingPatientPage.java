@@ -23,7 +23,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class ExistingPatient extends Application
+public class ViewExistingPatientPage extends Application
 {
 
 	private ArrayList<Patient> patientList = new ArrayList<Patient>();

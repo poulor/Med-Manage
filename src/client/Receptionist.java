@@ -8,7 +8,6 @@ public class Receptionist extends User{
     static int number_of_receptionists = 0;
     private int receptionist_id;
     private LocalDate join_date;
-    private int user_id;
    
     // ==[Constructor]==
     // Need to add user_id

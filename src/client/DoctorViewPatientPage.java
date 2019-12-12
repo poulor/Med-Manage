@@ -15,7 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class DoctorViewPatientFrontEnd extends Application
+public class DoctorViewPatientPage extends Application
 {
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();

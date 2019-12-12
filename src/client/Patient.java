@@ -12,7 +12,6 @@ public class Patient extends User {
 	private String notes = "\n";
     private int doctor_id;
     
-
 	public Patient(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, String phone_number,
 			String street, String city, String state, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
 			String medications, String healthHistory, int doctor_id) {
@@ -36,6 +35,10 @@ public class Patient extends User {
 		weightInPounds = newWeight;
 	}
 
+	public void setDoctorID(int newDoctorID) {
+		doctor_id = newDoctorID;
+	}
+	
 	public void addMedications(String updatedMeds){
 		medications += updatedMeds + ", ";
 	}
