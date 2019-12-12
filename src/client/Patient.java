@@ -1,5 +1,7 @@
 package client;
 
+import java.time.LocalDate;
+
 public class Patient extends User {
 	static int number_of_patients = 0;
 	private int patient_id;
@@ -12,7 +14,7 @@ public class Patient extends User {
     
 	// add automatic age calculator?
 
-	public Patient(String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
+	public Patient(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, String phone_number,
 			String street, String city, String state, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
 			String medications, String healthHistory, int doctor_id) {
 		

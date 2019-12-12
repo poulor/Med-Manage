@@ -25,7 +25,7 @@ public class User {
 	private String user_type;
 
 	// ==[Constructor]==
-	public User(String first_name, String middle_name, String last_name, String gender, String date_of_birth, 
+	public User(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, 
 			String phone_number, String street, String city, String state, int zip_code, String email, String username, String password, String user_type) {
 
 		this.first_name = first_name;
@@ -34,10 +34,10 @@ public class User {
 		this.gender = gender;
 
 		// Formatting date_of_birth string to LocalDate format
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		formatter = formatter.withLocale( Locale.US );
-		this.date_of_birth = LocalDate.parse(date_of_birth, formatter);
-
+//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
+//		formatter = formatter.withLocale( Locale.US );
+//		this.date_of_birth = LocalDate.parse(date_of_birth, formatter);
+		this.date_of_birth = date_of_birth;
 		this.age = Period.between(this.date_of_birth, LocalDate.now()).getYears();
 
 		this.phone_number = phone_number;
