@@ -1,8 +1,8 @@
 DROP DATABASE IF EXISTS MedicalClient;
 CREATE DATABASE MedicalClient;
--- drop user IF EXISTS 'scott'@'localhost';
--- create user 'scott'@'localhost' identified by 'tiger';
--- grant select, insert, upDATE, delete, create, create view, drop, execute, REFERENCES on javabook.* to 'scott'@'localhost';
+drop user IF EXISTS 'test_user'@'localhost';
+create user 'test_user'@'localhost' identified by 'password';
+grant select, insert, update, delete, create, create view, drop, execute, REFERENCES on MedicalClient.* to 'test_user'@'localhost';
 
 USE MedicalClient;
 DROP TABLE IF EXISTS Users;
@@ -20,9 +20,9 @@ CREATE TABLE Users (
 	gender VARCHAR(6), 
 	birth_date DATE,
 	phone_number VARCHAR(11),  
-	street VARCHAR(50),
-	city VARCHAR(25),
-	US_state VARCHAR(25),
+	street VARCHAR(50), 
+  city VARCHAR(50),
+  US_state VARCHAR(25),
 	zip_code INT(5),
 	email VARCHAR(30),
 	username VARCHAR(10),   
@@ -82,3 +82,7 @@ CREATE TABLE Appointments (
 	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
 	FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
 );
+
+select Users.first_name, Users.last_name, appointment_time from Appointments, Users
+		        where Appointments.appointment_date = '12/10/2019'
+                
