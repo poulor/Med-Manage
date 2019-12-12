@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.time.LocalDate;
 import java.util.ArrayList;
 
 import javafx.application.Application;
@@ -24,9 +25,9 @@ import javafx.stage.Stage;
 
 public class ExistingPatient extends Application
 {
-	
+
 	private ArrayList<Patient> patientList = new ArrayList<Patient>();
-		
+
 	private PreparedStatement preparedStatement;
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
@@ -40,19 +41,19 @@ public class ExistingPatient extends Application
 	private TextField zip = new TextField();
 	private TextField phone = new TextField();
 	private TextArea history = new TextArea();
-	
+
 	private Button findPatient = new Button("Find Patient");
-	
-	
+
+
 	@Override
-	
+
 	public void start(Stage primaryStage)
 	{
-		Patient p = new Patient("John", "A", "Doe", "Male", "10/31/2003", "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
+		Patient p = new Patient("John", "A", "Doe", "Male", LocalDate.of(2003, 10, 21), "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
 		patientList.add(p);
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
-		
+
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);
@@ -82,48 +83,55 @@ public class ExistingPatient extends Application
 		pane.add(new Label("History: "), 0, 10);
 		pane.add(history, 1, 10);
 		pane.add(findPatient, 1,11);
-	    GridPane.setHalignment(findPatient, HPos.RIGHT);
-	    
-	    findPatient.setOnAction(e -> pullInfo());
-	    
-	    Scene scene = new Scene(pane, 600, 400);
+		GridPane.setHalignment(findPatient, HPos.RIGHT);
+
+		findPatient.setOnAction(e -> pullInfo());
+
+		Scene scene = new Scene(pane, 600, 400);
 		primaryStage.setTitle("PatientInfo");
 		primaryStage.setScene(scene);
 		primaryStage.show();
 	}
-	
-	
-	
+
+
+
 	private void initializeDB() {    
-		  try {
-		      Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
-		       // Establish a connection
-		      Connection connection = DriverManager.getConnection
-		        ("jdbc:mysql://localhost/javabook", "scott", "tiger");
-		      System.out.println("Database connected");
-		      String queryString = "select user_id " +
-		        "where User.first_name = ? and User.last_name = ? ";
+		try {
+			Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
+			// Establish a connection
+			Connection connection = DriverManager.getConnection
+					("jdbc:mysql://localhost/javabook", "scott", "tiger");
+			System.out.println("Database connected");
+			String queryString = "select user_id " +
+					"where User.first_name = ? and User.last_name = ? ";
 			//test values- 444111110, 11111
-		      // Create a statement
-		      preparedStatement = connection.prepareStatement(queryString);    
-			  }
-		    catch (Exception ex) {  ex.printStackTrace();  }  }
-		 
-	private void pullInfo()
-	{
-		 String fName = firstName.getText();
-		 String lName = lastName.getText();
-		 try { preparedStatement.setString(1,  fName);
-		 preparedStatement.setString(2,  lName);
-		 
-		 ResultSet Id = preparedStatement.executeQuery();
-		 
-		 System.out.println(Id);
-		 
-		 
-		 }
-		 finally { System.out.println("failed");}
-		 /*
+			// Create a statement
+			preparedStatement = connection.prepareStatement(queryString);    
+		}
+		catch (Exception ex) {
+			ex.printStackTrace();
+		}
+	}
+
+	private void pullInfo() {
+		String fName = firstName.getText();
+		String lName = lastName.getText();
+		try {
+
+//			preparedStatement.setString(1,  fName);
+//			preparedStatement.setString(2,  lName);
+//
+//			ResultSet Id = preparedStatement.executeQuery();
+
+//			System.out.println(Id);
+
+
+		}
+		finally { 
+			System.out.println("failed");
+		}
+
+		/*
 		 middleInitial.setText(String.format("%s", patientList.get(Id - 1).getMiddleName()));
 		 eMail.setText(String.format("%s", p.getEmailAddress()));
 		 dob.setText(String.format("%s", p.getDateOfBirth()));
@@ -136,7 +144,7 @@ public class ExistingPatient extends Application
 		 history.setText(String.format("%s", p.getHealthHistory()));
 		 */
 	}
-	
+
 	public static void main(String[] args) 
 	{
 		launch(args);

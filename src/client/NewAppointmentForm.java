@@ -14,7 +14,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class NewAppForm extends Application
+public class NewAppointmentForm extends Application
 {
 	private TextField firstName = new TextField();
 	private TextField lastName = new TextField();

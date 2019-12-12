@@ -8,10 +8,8 @@ public class Administrator extends User{
     static int number_of_administrators = 0;
     private int administrator_id;
     private LocalDate join_date;
-    private int user_id;
    
     // ==[Constructor]==
-    // Need to add user_id
     public Administrator(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, String phone_number,
     String street, String city, String state, int zip_code, String email, String username, String password, String user_type, String join_date) {
 

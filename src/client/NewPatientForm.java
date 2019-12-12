@@ -13,7 +13,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class New_Patient_Form extends Application
+public class NewPatientForm extends Application
 {
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
@@ -21,7 +21,7 @@ public class New_Patient_Form extends Application
 	private TextField eMail = new TextField();
 	private TextField dob = new TextField();
 	private TextField gender = new TextField();
-	private TextField address = new TextField();
+	private TextField street = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
@@ -86,13 +86,13 @@ public class New_Patient_Form extends Application
 		
 		System.out.println("User Created!");
 		// Create a loan object.
-		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
+//		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
 //		Patient q = new Patient(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type, heightInInches, weightInPounds, medications, healthHistory, doctor_id)
 		// String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
 //		String street, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
 //		String medications, String healthHistory, int doctor_id)
-		users.add(p);
-		patients.add(p);
+//		users.add(p);
+//		patients.add(p);
 		
 		System.out.println(users.get(0));
 		System.out.println(patients.get(0));

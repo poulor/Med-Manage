@@ -7,7 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class recptFirstpageFE extends Application
+public class ReceptionistFirstPage extends Application
 {
 	
 	private Button newPatient = new Button("New Patient");

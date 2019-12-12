@@ -72,10 +72,8 @@ public class User {
 		gender = newGender;
 	}
 
-	public void setDateOfBirth(String newDateOfBirth) throws Exception{
-		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-		formatter = formatter.withLocale( Locale.US );
-		date_of_birth = LocalDate.parse(newDateOfBirth, formatter);
+	public void setDateOfBirth(LocalDate newDateOfBirth) {
+		date_of_birth = newDateOfBirth;
 	}
 
 	public void setAge(int newAge){
