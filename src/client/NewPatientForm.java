@@ -1,5 +1,12 @@
 package client;
 
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.concurrent.TimeUnit;
+
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -8,10 +15,12 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
 
 public class NewPatientForm extends Application
@@ -20,11 +29,9 @@ public class NewPatientForm extends Application
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
 	private TextField eMail = new TextField();
-	private TextField dob = new TextField();
+	private DatePicker dob = new DatePicker();
 	private ObservableList<String> genderList = FXCollections.observableArrayList( "Female", "Male", "Other" );
 	private ComboBox<String> gender = new ComboBox<String>(genderList);
-	
-//	private TextField gender = new TextField();
 	private TextField street = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
@@ -33,9 +40,15 @@ public class NewPatientForm extends Application
 	private TextArea history = new TextArea();
 
 	private Button newPatient = new Button("Add New Patient");
+
+	private HBox outcomeStatus = new HBox();
 	
-//	private ArrayList<User> users = new ArrayList<User>();
-//	private ArrayList<Patient> patients = new ArrayList<Patient>();
+	private Label outcomeStatusLabel = new Label();
+
+	private PreparedStatement preparedStatement;
+
+	//	private ArrayList<User> users = new ArrayList<User>();
+	//	private ArrayList<Patient> patients = new ArrayList<Patient>();
 
 
 	@Override
@@ -75,8 +88,10 @@ public class NewPatientForm extends Application
 		pane.add(new Label("Health History: "), 0, 10);
 		pane.add(history, 1, 10);
 		pane.add(newPatient, 1,11);
+		pane.add(outcomeStatus, 0, 12);
 		GridPane.setHalignment(newPatient, HPos.RIGHT);
 
+		initializeDB();
 		newPatient.setOnAction(e -> createNewPatient());
 
 		Scene scene = new Scene(pane, 1000, 1000);
@@ -87,19 +102,95 @@ public class NewPatientForm extends Application
 
 	private void createNewPatient() {
 		// Get values from text fields
-		
-//		System.out.println("User Created!");
+
+		//		System.out.println("User Created!");
 		// Create a loan object.
-//		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
-//		Patient q = new Patient(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type, heightInInches, weightInPounds, medications, healthHistory, doctor_id)
+		//		Patient p = new Patient(firstName.getText(), middleInitial.getText(), lastName.getText(), gender.getValue(), dob.getValue(), phone.getText(), street.getText(), city.getText(), state.getText(), Integer.parseInt(zip.getText()), eMail.getText(), "boy", "password", "PATIENT", 0, 0, "", "", 0);
+		//		Patient q = new Patient(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, username, password, user_type, heightInInches, weightInPounds, medications, healthHistory, doctor_id)
 		// String first_name, String middle_name, String last_name, String gender, String date_of_birth, String phone_number,
-//		String street, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
-//		String medications, String healthHistory, int doctor_id)
-//		users.add(p);
-//		patients.add(p);
+		//		String street, int zip_code, String email, String username, String password, String user_type, double heightInInches, double weightInPounds, 
+		//		String medications, String healthHistory, int doctor_id)
+		//		users.add(p);
+		//		patients.add(p);
+
+		//		System.out.println(users.get(0));
+		//		System.out.println(patients.get(0));
+
+		insertNewPatientIntoDB();
+		clearAllTextFields();
+	}
+
+	private void clearAllTextFields() {
+		firstName.clear();
+		middleInitial.clear();
+		lastName.clear();
+		eMail.clear();
+		dob.getEditor().clear();
+		gender.getEditor().clear();
+		street.clear();
+		city.clear();
+		state.clear();
+		zip.clear();
+		phone.clear();
+		history.clear();
 		
-//		System.out.println(users.get(0));
-//		System.out.println(patients.get(0));
+
+	}
+
+	private void initializeDB() {
+		try {
+			Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
+			// Establish a connection
+			Connection connection = DriverManager.getConnection
+					("jdbc:mysql://localhost/MedicalClient", "test_user", "password");
+			System.out.println("Database connected");
+			//			String queryString = "select firstName, mi, " +
+			//					"lastName, title, grade from Student, Enrollment, Course " +
+			//					"where Student.ssn = ? and Enrollment.courseId = ? " +
+			//					"and Enrollment.courseId = Course.courseId and Enrollment.ssn = Student.ssn";
+
+			String queryString = "insert into Users values ( NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \"\", \"\", \"PATIENT\")";
+//			System.out.println(queryString);
+			//insert into Users values ( NULL, "John", "", "Doe", "Male", "1982-04-24", "(780) 242-8071", "74 N. Henry Drive", "Waukegan", "IL", 60085, "jdoe@gmail.com", "jdoe", "password", "PATIENT");
+			preparedStatement = connection.prepareStatement(queryString);
+		}
+		catch(Exception ex){
+			ex.printStackTrace();
+
+		}
+
+	}
+
+	private void insertNewPatientIntoDB() {
+
+		try {
+			preparedStatement.setString(1,firstName.getText());
+			preparedStatement.setString(2,middleInitial.getText());
+			preparedStatement.setString(3,lastName.getText());
+			preparedStatement.setString(4,gender.getValue());
+			preparedStatement.setString(5,dob.getValue().toString());
+			preparedStatement.setString(6,phone.getText());
+			preparedStatement.setString(7,street.getText());
+			preparedStatement.setString(8,city.getText());
+			preparedStatement.setString(9,state.getText());
+			preparedStatement.setString(10,zip.getText());
+			preparedStatement.setString(11,eMail.getText());
+//			System.out.println(preparedStatement);
+
+			preparedStatement.executeUpdate();
+
+			outcomeStatusLabel.setText("Success: Added Patient");
+			outcomeStatus.getChildren().add(outcomeStatusLabel);
+
+
+		}
+		catch (SQLException ex) {
+			outcomeStatusLabel.setText("Failed: Could not add Patient");
+			outcomeStatus.getChildren().add(outcomeStatusLabel);
+			ex.printStackTrace();
+
+		}
+
 	}
 
 	public static void main(String[] args) 

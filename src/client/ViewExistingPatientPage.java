@@ -20,7 +20,7 @@ import javafx.stage.Stage;
 public class ViewExistingPatientPage extends Application
 {
 
-	private ArrayList<Patient> patientList = new ArrayList<Patient>();
+//	private ArrayList<Patient> patientList = new ArrayList<Patient>();
 
 	private PreparedStatement preparedStatement;
 	private TextField firstName = new TextField();
@@ -43,8 +43,8 @@ public class ViewExistingPatientPage extends Application
 
 	public void start(Stage primaryStage)
 	{
-		Patient p = new Patient("John", "A", "Doe", "Male", LocalDate.of(2003, 10, 21), "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
-		patientList.add(p);
+//		Patient p = new Patient("John", "A", "Doe", "Male", LocalDate.of(2003, 10, 21), "800000000", "21 Here St.",  "Dobbs Ferry", "NY", 10000, "jadoe@gmail.com", "jdoe", "password", "Patient", 70, 165, "", "", 21);
+//		patientList.add(p);
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 

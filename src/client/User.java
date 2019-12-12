@@ -31,10 +31,6 @@ public class User {
 		this.last_name = last_name;
 		this.gender = gender;
 
-		// Formatting date_of_birth string to LocalDate format
-//		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
-//		formatter = formatter.withLocale( Locale.US );
-//		this.date_of_birth = LocalDate.parse(date_of_birth, formatter);
 		this.date_of_birth = date_of_birth;
 		this.age = Period.between(this.date_of_birth, LocalDate.now()).getYears();
 
@@ -50,6 +46,14 @@ public class User {
 		this.user_type = user_type;
 		User.number_of_users += 1;
 		this.user_id = User.number_of_users;
+
+	}
+
+	// Constructor if no username/password provided
+	public User(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, 
+			String phone_number, String street, String city, String state, int zip_code, String email, String user_type) {
+
+		this(first_name, middle_name, last_name, gender, date_of_birth, phone_number, street, city, state, zip_code, email, "", "", user_type);
 
 	}
 

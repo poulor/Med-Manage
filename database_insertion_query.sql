@@ -1,0 +1,1 @@
+insert into Users values ( NULL, "John", "", "Doe", "Male", "1982-04-24", "(780) 242-8071", "74 N. Henry Drive", "Waukegan", "IL", 60085, "jdoe@gmail.com", "jdoe", "password", "PATIENT");
