@@ -74,7 +74,7 @@ CREATE TABLE Patients (
 CREATE TABLE Appointments (
 	appointment_id INT NOT NULL AUTO_INCREMENT,
 	appointment_date DATE,
-	appointment_time TIMESTAMP,
+	appointment_time TIME,
 	notes VARCHAR(500),
 	doctor_id INT,
 	patient_id INT,

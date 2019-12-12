@@ -5,7 +5,6 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.concurrent.TimeUnit;
 
 import javafx.application.Application;
 import javafx.collections.FXCollections;
@@ -22,6 +21,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+
 
 public class NewPatientForm extends Application
 {
@@ -42,10 +42,19 @@ public class NewPatientForm extends Application
 	private Button newPatient = new Button("Add New Patient");
 
 	private HBox outcomeStatus = new HBox();
-	
+
 	private Label outcomeStatusLabel = new Label();
 
-	private PreparedStatement preparedStatement;
+	private PreparedStatement userPreparedStatement;
+	
+	private PreparedStatement patientPreparedStatement;
+	
+	private PreparedStatement userIDPreparedStatement;
+
+	
+	private int userID = 0;
+	
+	private int doctorID = 1;
 
 	//	private ArrayList<User> users = new ArrayList<User>();
 	//	private ArrayList<Patient> patients = new ArrayList<Patient>();
@@ -89,6 +98,7 @@ public class NewPatientForm extends Application
 		pane.add(history, 1, 10);
 		pane.add(newPatient, 1,11);
 		pane.add(outcomeStatus, 0, 12);
+		outcomeStatus.getChildren().add(outcomeStatusLabel);
 		GridPane.setHalignment(newPatient, HPos.RIGHT);
 
 		initializeDB();
@@ -133,9 +143,42 @@ public class NewPatientForm extends Application
 		zip.clear();
 		phone.clear();
 		history.clear();
-		
+
 
 	}
+	
+	private void getNewPatientUserID() {
+		
+		try {
+			userIDPreparedStatement.setString(1, firstName.getText());
+			userIDPreparedStatement.setString(2, lastName.getText());
+			userIDPreparedStatement.setString(3, dob.getValue().toString());
+			
+			ResultSet resultSet = userIDPreparedStatement.executeQuery();
+			
+			if (resultSet.next()) {
+//				userID = Integer.parseInt(resultSet.getString(1));
+				userID = resultSet.getInt(1);
+				
+				
+				
+			}
+			else {
+				System.out.println("User ID not found");
+			}
+			
+			
+			
+			
+		}
+		catch(SQLException ex) {
+			ex.printStackTrace();
+			
+		}
+		
+	}
+	
+
 
 	private void initializeDB() {
 		try {
@@ -144,15 +187,18 @@ public class NewPatientForm extends Application
 			Connection connection = DriverManager.getConnection
 					("jdbc:mysql://localhost/MedicalClient", "test_user", "password");
 			System.out.println("Database connected");
-			//			String queryString = "select firstName, mi, " +
-			//					"lastName, title, grade from Student, Enrollment, Course " +
-			//					"where Student.ssn = ? and Enrollment.courseId = ? " +
-			//					"and Enrollment.courseId = Course.courseId and Enrollment.ssn = Student.ssn";
-
-			String queryString = "insert into Users values ( NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \"\", \"\", \"PATIENT\")";
-//			System.out.println(queryString);
-			//insert into Users values ( NULL, "John", "", "Doe", "Male", "1982-04-24", "(780) 242-8071", "74 N. Henry Drive", "Waukegan", "IL", 60085, "jdoe@gmail.com", "jdoe", "password", "PATIENT");
-			preparedStatement = connection.prepareStatement(queryString);
+			String userQueryString = "INSERT INTO Users VALUES ( NULL, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, \"\", \"\", \"PATIENT\")";
+			//			System.out.println(queryString);
+			userPreparedStatement = connection.prepareStatement(userQueryString);
+			
+			String userIDQueryString = "SELECT user_id FROM Users WHERE first_name = ? AND last_name = ? AND birth_date = ?";
+			
+			userIDPreparedStatement = connection.prepareStatement(userIDQueryString);
+			
+			String patientQueryString = "INSERT INTO Patients VALUES (NULL, ?, ?, ?, ?, ?, ?, ?)";
+			patientPreparedStatement = connection.prepareStatement(patientQueryString);
+			
+//			PreparedStatement numPatientsPreparedStatement = Connection.prepare
 		}
 		catch(Exception ex){
 			ex.printStackTrace();
@@ -162,34 +208,64 @@ public class NewPatientForm extends Application
 	}
 
 	private void insertNewPatientIntoDB() {
+		
+		
 
 		try {
-			preparedStatement.setString(1,firstName.getText());
-			preparedStatement.setString(2,middleInitial.getText());
-			preparedStatement.setString(3,lastName.getText());
-			preparedStatement.setString(4,gender.getValue());
-			preparedStatement.setString(5,dob.getValue().toString());
-			preparedStatement.setString(6,phone.getText());
-			preparedStatement.setString(7,street.getText());
-			preparedStatement.setString(8,city.getText());
-			preparedStatement.setString(9,state.getText());
-			preparedStatement.setString(10,zip.getText());
-			preparedStatement.setString(11,eMail.getText());
-//			System.out.println(preparedStatement);
+			userPreparedStatement.setString(1,firstName.getText());
+			userPreparedStatement.setString(2,middleInitial.getText());
+			userPreparedStatement.setString(3,lastName.getText());
+			userPreparedStatement.setString(4,gender.getValue());
+			userPreparedStatement.setString(5,dob.getValue().toString());
+			userPreparedStatement.setString(6,phone.getText());
+			userPreparedStatement.setString(7,street.getText());
+			userPreparedStatement.setString(8,city.getText());
+			userPreparedStatement.setString(9,state.getText());
+			userPreparedStatement.setString(10,zip.getText());
+			userPreparedStatement.setString(11,eMail.getText());
+			//			System.out.println(preparedStatement);
 
-			preparedStatement.executeUpdate();
+			userPreparedStatement.executeUpdate();
 
-			outcomeStatusLabel.setText("Success: Added Patient");
-			outcomeStatus.getChildren().add(outcomeStatusLabel);
-
+			
+			
 
 		}
 		catch (SQLException ex) {
 			outcomeStatusLabel.setText("Failed: Could not add Patient");
-			outcomeStatus.getChildren().add(outcomeStatusLabel);
 			ex.printStackTrace();
 
 		}
+		
+		getNewPatientUserID();
+		
+		try {
+			patientPreparedStatement.setInt(1,0);
+			patientPreparedStatement.setInt(2,0);
+			patientPreparedStatement.setString(3,"");
+			patientPreparedStatement.setString(4,history.getText());
+			patientPreparedStatement.setString(5,"");
+			patientPreparedStatement.setInt(6,userID);
+			patientPreparedStatement.setInt(7,doctorID);
+
+			//			System.out.println(preparedStatement);
+
+			patientPreparedStatement.executeUpdate();
+			
+			outcomeStatusLabel.setText("Success: Added Patient");
+
+			
+			
+
+		}
+		catch (SQLException ex) {
+			
+
+			outcomeStatusLabel.setText("Failed: Could not add Patient");
+			ex.printStackTrace();
+
+		}
+		
 
 	}
 
