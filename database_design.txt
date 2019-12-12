@@ -1,91 +1,120 @@
 // Database design  
 
-Table users as U {   
+Table Users as U {   
 
-  user_id int [pk, increment] // auto-increment   
+	user_id INT [pk, increment] // auto-increment   
 
-  full_name varchar   
+	first_name VARCHAR(25)
 
-  username varchar   
+	middle_name VARCHAR(1)
 
-  password varchar   
+	last_name VARCHAR(25)
 
-  user_type int   
+	gender VARCHAR(6)
+	
+	birth_date DATE
 
-}   
+	phone_number VARCHAR(11) 
+	
+	street VARCHAR(50)
 
-Table doctors as U {   
+	city VARCHAR(50)
 
-  doctor_id int [pk, increment] // auto-increment   
+	US_state VARCHAR(25)  
+	
+	zip_code INT(5)
 
-  full_name varchar   
+	email VARCHAR(30)
 
-  phone_number phone_number   
+	username VARCHAR(10)   
 
-  specialties varchar
+	password VARCHAR(16)   
 
-  department varchar   
+	user_type VARCHAR(20)   
 
-  user_id int [pk, increment]   
+}
 
-}   
+Table Administrators as U {
 
-Table patients as U {   
+	administrator_id INT [pk, increment] // auto-increment   
 
-  patient_id int [pk, increment] // auto-increment   
+	join_date DATE 
 
-  full_name varchar   
+	user_id INT [pk,increment]
 
-  gender varchar   
+}
 
-  age int   
+Table Receptionists as U {   
 
-  date_of_birth date   
+	receptionist_id INT [pk, increment] // auto-increment   
 
-  height double   
+	join_date DATE   
 
-  weight double   
+	user_id INT [pk, increment] 
 
-  address varchar   
+} 
 
-  phone_number varchar   
+Table Doctors as U {   
 
-  health_history varchar   
+	doctor_id INT [pk, increment] // auto-increment
 
-}   
+	join_date DATE
 
-Table receptionists as U {   
+	specialty VARCHAR(15)
 
-  receptionist_id int [pk, increment] // auto-increment   
+	department VARCHAR(15)   
 
-  full_name varchar   
-
-  date_joined date   
-
-}   
-
-Table appointments as U {   
-
-  appointment_id int [pk, increment] // auto-increment   
-
-  patient_name varchar   
-
-  appointment_date date   
-
-  appointment_time timestamp  
-
-  notes varchar  
-
-  doctor_id int [pk, increment]   
-
-  patient_id int [pk, increment]   
+	user_id INT [pk, increment]   
 
 }   
 
-Ref: patients.patient_id < appointments.patient_id   
+Table Patients as U {   
 
-Ref: doctors.doctor_id < appointments.doctor_id   
+	patient_id INT [pk, increment] // auto-increment   
 
-Ref: doctors.user_id < patients.patient_id
+	height DOUBLE   
 
-Ref: users.user_id - doctors.user_id
+	weight DOUBLE
+
+	medications VARCHAR(500)
+
+	health_history VARCHAR(500)
+
+	notes VARCHAR(500)
+	
+	doctor_id INT [pk, increment]
+
+	user_id INT [pk, increment] 
+
+}     
+
+Table Appointments as U {   
+
+	appointment_id INT [pk, increment] // auto-increment   
+
+	appointment_date DATE   
+
+	appointment_time TIMESTAMP  
+
+	notes VARCHAR(500)  
+
+	doctor_id INT [pk, increment]   
+
+	patient_id INT [pk, increment]   
+
+}   
+
+
+Ref: Patients.patient_id < Appointments.patient_id   // One to many
+
+Ref: Doctors.doctor_id < Appointments.doctor_id   // One to many
+
+Ref: Doctors.doctor_id < Patients.doctor_id	// One to many
+
+Ref: Users.user_id - Doctors.user_id // One to one
+
+Ref: Users.user_id - Administrators.user_id	// One to one
+
+Ref: Users.user_id - Patients.user_id // One to one
+
+Ref: Users.user_id - Receptionists.user_id // One to one
