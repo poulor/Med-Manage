@@ -3,14 +3,10 @@ package client;
 import java.util.ArrayList;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
 import javafx.geometry.HPos;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.DatePicker;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -23,15 +19,9 @@ public class New_Patient_Form extends Application
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
 	private TextField eMail = new TextField();
-	private DatePicker dob = new DatePicker();
-	ObservableList<String> genders = 
-			FXCollections.observableArrayList(
-					"Female",
-					"Male",
-					"Other"
-					);
-	private ComboBox<String> gender = new ComboBox<String>(genders);
-	private TextField street = new TextField();
+	private TextField dob = new TextField();
+	private TextField gender = new TextField();
+	private TextField address = new TextField();
 	private TextField city = new TextField();
 	private TextField state = new TextField();
 	private TextField zip = new TextField();
