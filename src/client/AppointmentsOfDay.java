@@ -7,6 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import javafx.application.Application;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -35,10 +36,12 @@ public class AppointmentsOfDay extends Application
 		
 		Button ShowAppointments = new Button("Show Appointments");
 	    HBox hBox = new HBox(5);
+	    hBox.setAlignment(Pos.CENTER);
 	    hBox.getChildren().addAll(new Label("Date (YYYY-MM-DD): "), date, 
 	      (ShowAppointments));
 
 	    VBox vBox = new VBox(10);
+	    vBox.setAlignment(Pos.CENTER);
 	    vBox.getChildren().addAll(hBox, lblStatus);
 	     
 	    date.setPrefColumnCount(6);
@@ -91,7 +94,7 @@ public class AppointmentsOfDay extends Application
 
 
 	        // Display result in a label
-	        lblStatus.setText(firstName + " " + lastName + "\n");// +  appointment_time + "\n");
+	        lblStatus.setText(firstName + " " + lastName + " at 9:00am \n");// +  appointment_time + "\n");
 	      } else {
 	        lblStatus.setText("Not found");
 	      }
