@@ -14,7 +14,7 @@ Table Users as U {
 	
 	birth_date DATE
 
-	phone_number VARCHAR(11) 
+	phone_number VARCHAR(16) 
 	
 	street VARCHAR(50)
 
