@@ -1,9 +1,7 @@
 package client;
 
 import java.time.LocalDate;
-import java.time.Period;
-import java.time.format.DateTimeFormatter;
-import java.util.Locale;  
+import java.time.Period;  
 
 public class User {
 	static int number_of_users = 0;

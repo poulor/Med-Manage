@@ -82,7 +82,4 @@ CREATE TABLE Appointments (
 	FOREIGN KEY (doctor_id) REFERENCES Doctors(doctor_id),
 	FOREIGN KEY (patient_id) REFERENCES Patients(patient_id)
 );
-
-select Users.first_name, Users.last_name, appointment_time from Appointments, Users
-		        where Appointments.appointment_date = '12/10/2019'
                 

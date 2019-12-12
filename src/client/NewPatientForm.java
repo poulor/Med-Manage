@@ -1,7 +1,5 @@
 package client;
 
-import java.util.ArrayList;
-
 import javafx.application.Application;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -36,8 +34,8 @@ public class NewPatientForm extends Application
 
 	private Button newPatient = new Button("Add New Patient");
 	
-	private ArrayList<User> users = new ArrayList<User>();
-	private ArrayList<Patient> patients = new ArrayList<Patient>();
+//	private ArrayList<User> users = new ArrayList<User>();
+//	private ArrayList<Patient> patients = new ArrayList<Patient>();
 
 
 	@Override
