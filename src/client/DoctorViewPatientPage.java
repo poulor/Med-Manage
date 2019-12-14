@@ -12,7 +12,8 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class DoctorViewPatientPage extends Application
-{
+{	
+	// Textfields
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
@@ -25,17 +26,17 @@ public class DoctorViewPatientPage extends Application
 	
 	private Button viewPatient = new Button("View Patient");
 
-	
-
 	@Override
 	public void start(Stage primaryStage)
-	{
+	{	
+
 		dob.setEditable(false);
 		gender.setEditable(false);
 		
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 		
+		// Add all textfields to a gridpane
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);

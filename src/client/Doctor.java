@@ -12,7 +12,6 @@ public class Doctor extends User{
     private String department;
    
     // ==[Constructor]==
-    // Need to add user_id
     public Doctor(String first_name, String middle_name, String last_name, String gender, LocalDate date_of_birth, String phone_number,
     String street, String city, String state, int zip_code, String email, String username, String password, String user_type, String join_date, String specialty, String department) {
 
@@ -30,32 +29,46 @@ public class Doctor extends User{
     }
 
     // ==[Mutators]==
+    // Precondition: None
+    // Postcondition: specialty is changed to the value newSpecialty
     public void setSpecialty(String newSpecialty){
         specialty = newSpecialty;
     }
 
+    // Precondition: None
+    // Postcondition: department is changed to the value newDepartment
     public void setDepartment(String newDepartment){
         department = newDepartment;
     }
     
     // ==[Accessors]==
+    // Precondition: None
+    // Postcondition: the date the doctor is returned as a string
     public String getJoinDate(){
         return join_date.toString();
     }
 
+    // Precondition: None
+    // Postcondition: Doctor's specialty is returned as a string
     public String getSpecialty(){
         return specialty;
     }
     
+    // Precondition: None
+    // Postcondition: department is changed to the value newDepartment
     public String getDepartment(){
         return department;
     }
 
+    // Precondition: None
+    // Postcondition: ID is returned as an int
     public int getDoctorID(){
         return doctor_id;
     }
 
     @Override
+    // Precondition: None
+    // Postcondition: string representation of the doctor is returned
     public String toString() {
         String stringToReturn = "";
         stringToReturn += "Name: " + super.getFirstName() + " " + super.getLastName() + "\n";

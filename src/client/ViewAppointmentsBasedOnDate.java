@@ -17,8 +17,13 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class ViewAppointmentsBasedOnDate extends Application
-{
+{	
+
+	// Prepared statement to put into the db
+
 	private PreparedStatement preparedStatement;
+
+	// Appropriate textfields
 	private TextField date = new TextField();
 	private Label lblStatus = new Label();
 	@Override
@@ -26,8 +31,10 @@ public class ViewAppointmentsBasedOnDate extends Application
 	public void start(Stage primaryStage)
 	{
 
+		// Initialize DB
 		initializeDB();
 
+		// Button
 		Button ShowAppointments = new Button("Show Appointments");
 		HBox hBox = new HBox(5);
 		hBox.setAlignment(Pos.CENTER);
@@ -61,8 +68,12 @@ public class ViewAppointmentsBasedOnDate extends Application
 		primaryStage.show();
 	}
 
+
+	// Precondition: None
+	// Postcondition: DB is initialize is error is caught
 	private void initializeDB() {    
 		try {
+
 			Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
 			// Establish a connection
 			Connection connection = DriverManager.getConnection
@@ -74,11 +85,15 @@ public class ViewAppointmentsBasedOnDate extends Application
 					+ "and Patients.user_id = Users.user_id";
 			preparedStatement = connection.prepareStatement(queryString);    
 		}
+
 		catch (Exception ex) {  
 			ex.printStackTrace();
 		} 
 	}
 
+
+	// Precondition: DB must be initialized
+	// Postcondition: name, date and time are printed if appointment is found
 	private void showAppointments() {
 		String dt = date.getText();
 		try { preparedStatement.setString(1, dt);

@@ -14,9 +14,12 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 public class LoginPage extends Application 
-{
+{	
+	// Fields
 	private TextField un = new TextField();
 	private TextField pw = new TextField();
+
+	// For drop down menu
 	ObservableList<String> userType = 
 			FXCollections.observableArrayList(
 					"Patient",
@@ -30,7 +33,8 @@ public class LoginPage extends Application
 	@Override
 	
 	public void start (Stage primaryStage)
-	{
+	{	
+		// Add all fields to a gridpane
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);

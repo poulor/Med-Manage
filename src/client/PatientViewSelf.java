@@ -11,6 +11,8 @@ import javafx.stage.Stage;
 
 public class PatientViewSelf extends Application
 {
+
+	// texfields
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
@@ -31,6 +33,7 @@ public class PatientViewSelf extends Application
 	public void start(Stage primaryStage)
 	{
 
+		// Disable fields that shouldn't be inputted into
 		eMail.setEditable(false);
 		dob.setEditable(false);
 		gender.setEditable(false);
@@ -44,6 +47,8 @@ public class PatientViewSelf extends Application
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 
+
+		// Put everything in a grid pane
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);

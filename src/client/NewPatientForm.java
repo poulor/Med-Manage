@@ -24,7 +24,9 @@ import javafx.stage.Stage;
 
 
 public class NewPatientForm extends Application
-{
+{	
+
+	// textfields
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
@@ -45,6 +47,7 @@ public class NewPatientForm extends Application
 
 	private Label outcomeStatusLabel = new Label();
 
+	// prepared statements for SQL queries
 	private PreparedStatement userPreparedStatement;
 	
 	private PreparedStatement patientPreparedStatement;
@@ -52,6 +55,7 @@ public class NewPatientForm extends Application
 	private PreparedStatement userIDPreparedStatement;
 
 	
+	// Need userID and doctorID from DB to make an appointment
 	private int userID = 0;
 	
 	private int doctorID = 1;
@@ -65,6 +69,7 @@ public class NewPatientForm extends Application
 	public void start(Stage primaryStage)
 	{
 
+		// put everything in a gridpane
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 
@@ -101,7 +106,10 @@ public class NewPatientForm extends Application
 		outcomeStatus.getChildren().add(outcomeStatusLabel);
 		GridPane.setHalignment(newPatient, HPos.RIGHT);
 
+		
 		initializeDB();
+		
+		// Event handler
 		newPatient.setOnAction(e -> createNewPatient());
 
 		Scene scene = new Scene(pane, 1000, 1000);
@@ -110,6 +118,9 @@ public class NewPatientForm extends Application
 		primaryStage.show();
 	}
 
+	// Precondition: none
+	// Postcondition: a new patient is added into the DB
+	// All textfields are cleared
 	private void createNewPatient() {
 		// Get values from text fields
 
@@ -130,6 +141,9 @@ public class NewPatientForm extends Application
 		clearAllTextFields();
 	}
 
+
+	// Precondition: none
+	// Postcondition: all textfields are cleared
 	private void clearAllTextFields() {
 		firstName.clear();
 		middleInitial.clear();
@@ -147,6 +161,8 @@ public class NewPatientForm extends Application
 
 	}
 	
+	// Precondition: eventhandler must have been activated with first name, last name and dob entered in
+	// Postcondition: user id of person with first name firstName, last name lastName and birtday dob is stored into userID or errors are printed
 	private void getNewPatientUserID() {
 		
 		try {
@@ -179,7 +195,8 @@ public class NewPatientForm extends Application
 	}
 	
 
-
+	// Precondition: db must be running
+	// Postcondition: db is connected
 	private void initializeDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");      // Load the JDBC driver
@@ -207,6 +224,8 @@ public class NewPatientForm extends Application
 
 	}
 
+	// Precondition: db must be connected and running
+	// Postcondition: new user and patient is inserted into db
 	private void insertNewPatientIntoDB() {
 		
 		

@@ -10,6 +10,7 @@ import javafx.stage.Stage;
 public class ReceptionistFirstPage extends Application
 {
 	
+	// Buttons
 	private Button newPatient = new Button("New Patient");
 	private Button existingPatient = new Button("Existing Patient");
 	private Button appointments = new Button("Appointments");
@@ -18,7 +19,8 @@ public class ReceptionistFirstPage extends Application
 	@Override
 	
 	public void start (Stage primaryStage)
-	{
+	{	
+		// put buttons in gridpane
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);

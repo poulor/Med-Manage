@@ -27,14 +27,23 @@ public class Receptionist extends User{
     }
 
     // ==[Accessors]==
+
+    // Precondition: none
+    // Postcondition: returns receptionist id as an int
     public int getReceptionistID(){
         return receptionist_id;
     }
 
+
+    // Precondition: none
+    // Postcondition: returns join date as a string
     public String getJoinDate(){
         return join_date.toString();
     }
     
+
+    // Precondition: none
+    // Postcondition: returns string representation of the receptionist
     @Override
     public String toString() {
         String stringToReturn = "";

@@ -32,44 +32,61 @@ public class Appointment{
     }
 
     // ==[Mutators]==
+    // Precondition: none
+    // Postcondition: appointment_date is modified to be the date represented by newAppointmentDate
     public void setAppointmentDate(String newAppointmentDate){
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MM/dd/yyyy");
     	formatter = formatter.withLocale( Locale.US );
         appointment_date = LocalDate.parse(newAppointmentDate, formatter);
     }
-
+    
+    
+    // Precondition: None
+    // Postconditon: appointment_time is modified to be the time represented by newAppointmentTime
     public void setAppointmentTime(String newAppointmentTime){
         // TO DO
     }
-
+    
+    // Precondition: None
+    // Postcondition: newNote is added to the notes
     public void addNotes(String newNote){
         notes += newNote + "\n";
     }
     
     // ==[Accessors]==
+    // Precondition: None
+    // Postcondition: Appointment date is returned as a String in ISO Date format
     public String getAppointmentDate(){
         return appointment_date.toString();
     }
-
-    /* public String getAppointmentTime(){
-        // return appointment_time.toString();
-
-        // TO DO
-    } */
+    // Precondition: None
+    // Postcondition: The appointment time is returned as a string
+    public String getAppointmentTime(){
+        return appointment_time.toString();
+    }
     
+    // Precondition: None
+    // Postcondition: doctor is returned as an int
     public int getDoctorID(){
         return doctor_id;
     }
-
+    
+    // Precondition: None
+    // Postcondition: patient id is returned as an int
     public int getPatientID(){
         return patient_id;
     }
-
+    
+    
+    // Precondition: None
+    // Postcondition: notes is returned as a string
     public String getNotes(){
         return notes;
     }
 
     @Override
+    // Precondition: None
+    // Postcondition: String representation of the appointment is returned
     public String toString() {
         String stringToReturn = "";
         stringToReturn += "Appointment ID: " + appointment_id + "\n";

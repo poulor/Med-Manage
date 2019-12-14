@@ -26,15 +26,21 @@ public class Administrator extends User{
     }
 
     // ==[Accessors]==
+    // Precondition: None
+    // Postcondition: The administrator id is returned
     public int getAdministratorID(){
         return administrator_id;
     }
-
+    
+    // Precondition: None
+    // Postcondition: The date the administrator joined is returned as a string
     public String getJoinDate(){
         return join_date.toString();
     }
 
     @Override
+    // Precondition: None
+    // Postcondition: String representation of the admin is returned
     public String toString() {
         String stringToReturn = "";
         stringToReturn += "Name: " + super.getFirstName() + " " + super.getLastName() + "\n";

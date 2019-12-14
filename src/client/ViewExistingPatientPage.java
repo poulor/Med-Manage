@@ -24,7 +24,10 @@ public class ViewExistingPatientPage extends Application
 
 	//	private ArrayList<Patient> patientList = new ArrayList<Patient>();
 
+	// Prepared statement to view patient from DB
 	private PreparedStatement preparedStatement;
+
+	// Textfields
 	private TextField firstName = new TextField();
 	private TextField middleInitial = new TextField();
 	private TextField lastName = new TextField();
@@ -52,6 +55,8 @@ public class ViewExistingPatientPage extends Application
 		middleInitial.setPrefWidth(30);
 		middleInitial.setMaxWidth(30); 
 
+
+		// Add everything ot gridpane
 		GridPane pane = new GridPane();
 		pane.setHgap(5);
 		pane.setVgap(5);
@@ -88,8 +93,6 @@ public class ViewExistingPatientPage extends Application
 		
 		outcomeStatus.getChildren().add(outcomeStatusLabel);
 		
-		
-		
 		GridPane.setHalignment(findPatient, HPos.RIGHT);
 
 		initializeDB();
@@ -119,6 +122,9 @@ public class ViewExistingPatientPage extends Application
 
 	} */
 	
+
+	// Precondiiton: none
+	// Postcondition: disables all appropriate textfields
 	private void disableTextFields() {
 	
 		eMail.setEditable(false);
@@ -131,7 +137,9 @@ public class ViewExistingPatientPage extends Application
 		history.setEditable(false);
 
 	}
-	
+
+	// Precondition: none
+	// Postcondition: textfields are filled from info from the db
 	private void fillTextFields(ResultSet rSet) {
 		
 		try {
@@ -151,8 +159,8 @@ public class ViewExistingPatientPage extends Application
 		
 	}
 
-
-
+	// Precondition: None
+	// Postcondition: DB is initialize is error is caught
 	private void initializeDB() {
 		try {
 			Class.forName("com.mysql.jdbc.Driver"); // Load the JDBC driver
@@ -176,6 +184,9 @@ public class ViewExistingPatientPage extends Application
 
 	}
 
+
+	// Precondition: None
+	// Postcondition: Patient info is retrieved from database
 	private void getPatientInfo() {
 		
 		try {
