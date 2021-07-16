@@ -3,11 +3,11 @@ Med-Manage is Java based client that facilitates Doctors-Receptionist-Patient in
 
 Doctors can view patient info such as patient's health history, height, weight, etc.
 
-Doctors can also view there past and future appointments.
+Doctors can also view past and future appointments.
 
 Receptionists can add new patients, create new appointments and view appointments.
 
-Patients can view info about the Doctor as well as their own patient info.
+Patients can view info about their Doctor as well as their own patient info.
 
 ## II ) Supported Mechanics
 
