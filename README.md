@@ -1,6 +1,5 @@
-# MedicalClientApplication
-
-Medical Client is Java based client that facilitates Doctors-Receptionist-Patient interaction.
+# Med-Manage
+Med-Manage is Java based client that facilitates Doctors-Receptionist-Patient interaction.
 
 Doctors can view patient info such as patient's health history, height, weight, etc.
 
